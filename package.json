@@ -1,8 +1,8 @@
 {
   "name": "discruft-bot",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "The DashCruft Nation community Discord bot!",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/DashCruft-Nation/DisCruft-Bot.git"
   },
   "author": "DashCruft-Nation-Organization",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/DashCruft-Nation/DisCruft-Bot/issues"
   },
