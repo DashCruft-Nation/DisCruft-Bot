@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 const Discord = require('discord.js');
-const axios = require('axios');
+const fetch = require('node-fetch').default;
 const { Client, Message } = require('discord.js');
 /**
  * JSDOC
@@ -9,20 +9,24 @@ const { Client, Message } = require('discord.js');
  * @param {String[]} args
  */
 module.exports.run = async (client, message, args) => {
-	// nuggetapi pog :LMFAO:
-	axios.get('https://api.nuggetdev.com/api/meme')
-		.then(function(response) {
+	fetch('https://api.nuggetdev.com/api/meme')
+		.then(res => res.json())
+		.then((json) => {
 			const embed = new Discord.MessageEmbed()
-				.setTitle(`${response.data.title}`)
-				.setURL(`${response.data.url}`)
-				.setImage(response.data.image)
+				.setTitle(`${json.data.title}`)
+				.setURL(`${json.data.url}`)
+				.setImage(json.data.image)
 				.setColor('RANDOM')
-				.setFooter(`👍 ${response.data.upvotes} 👎 ${response.data.downvotes} 💬 ${response.data.comments}`);
-			message.channel.send(embed);
+				.setFooter(`👍 ${json.data.upvotes} | 💬 ${json.data.comments}`);
+			message.reply({
+				embed,
+				allowedMentions: { repliedUser: false },
+			});
 		});
 };
 
 module.exports.config = {
 	name: 'meme',
-	aliases: [],
+	aliases: ['m'],
+	description: 'Sends an ebik meme',
 };
