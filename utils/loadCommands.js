@@ -9,7 +9,7 @@ function loadCommands(client) {
 		if(!cmdfolders[0]) return console.log('Client couldn\'t find any commands in the commands folder!');
 		cmdfolders.forEach((cmdfolder) => {
 			fs.readdir(`commands/${cmdfolder}`, (err, cmds) => {
-				if (!cmd[0]) return console.log(`Client couldn't find any commands in the ${cmdfolder} folder!`);
+				if (!cmds) return console.log(`Client couldn't find any commands in the ${cmdfolder} folder!`);
 				cmds.forEach((cmd) => {
 					const pull = require(`../commands/${cmdfolder}/${cmd}`);
 					client.commands.set(pull.config.name, pull);
