@@ -27,4 +27,5 @@ module.exports.run = async (client, message, args) => {
 module.exports.config = {
 	name: 'meme',
 	aliases: [],
+	description: 'Sends an ebik meme',
 };

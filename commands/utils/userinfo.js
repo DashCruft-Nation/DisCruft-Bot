@@ -14,7 +14,7 @@ const momentDurationFormatSetup = require('moment-duration-format');
 module.exports.run = async (client, message, args) => {
 
 	const targetMember = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
-	if(!targetMember) return;
+	if (!targetMember) return;
 
 	momentDurationFormatSetup(moment);
 
@@ -40,11 +40,12 @@ module.exports.run = async (client, message, args) => {
 			{ name: '📅 Account Age', value: `\`\`\`${moment.duration(moment().diff(targetMember.user.createdAt.getTime())).format('Y [Year(s)], D [Day(s)], H [Hour(s)], m [Min(s)]')}\`\`\``, inline: false },
 		);
 
-	message.channel.send(embed);
+	message.reply({ embed: embed, allowedMentions: { repliedUser: false } });
 
 };
 
 module.exports.config = {
 	name: 'userinfo',
 	aliases: ['uinfo', 'whois'],
+	description: 'Shows info of a user!',
 };

@@ -29,4 +29,5 @@ module.exports.run = async (client, message, args) => {
 module.exports.config = {
 	name: 'docs',
 	aliases: ['djs'],
+	description: 'Searches up discord.js documentation!',
 };
