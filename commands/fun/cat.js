@@ -9,16 +9,19 @@ const fetch = require('node-fetch').default;
  * @param {String[]} args
  */
 module.exports.run = async (client, message, args) => {
-	// Monkedev api for the cat facts because cats are the best animal
-	fetch('https://api.monkedev.com/facts/cat?key=kPESu2IOtzHFt3AsBOnRfTRZu')
+	// Snowflake API for the cat images 
+	fetch("https://api.snowflakedev.xyz/api/cat", {
+        headers: {
+            "Authorization": "YOUR_API_KEY" // Change this API key if you have premium
+    }})
 		.then(response => response.json())
 		.then(data => {
-			message.reply(data.fact, { allowedMentions: { repliedUser: false } });
+			message.reply(); // TODO: Reply with image (API returns image binary)
 		});
 };
 
 module.exports.config = {
-	name: 'catfact',
+	name: 'cat',
 	aliases: [],
-	description: 'Cat facts for you to know about!',
+	description: 'Cat images',
 };
