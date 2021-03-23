@@ -1,8 +1,14 @@
 module.exports.run = async (client, message, args) => {
-    var latency = new Date().getTime() - message.createdTimestamp;
-    var apilatency = Math.round(client.ws.ping)
+    const latency = new Date().getTime() - message.createdTimestamp;
+    const apilatency = Math.round(client.ws.ping)
+    
+    message.channel.send({
+        embed: {
+            title: 'Pong 🏓',
+            description: `latency: \`${latency}ms\`\nAPI latency: \`${apilatency}ms\``
+        }
+    });
 
-    message.channel.send(`🏓 - 🏓 - 🏓\n\`\`\`js\nlatency: ${latency}ms\nAPI latency: ${apilatency}ms\`\`\``)
 }
 
 module.exports.config = {
