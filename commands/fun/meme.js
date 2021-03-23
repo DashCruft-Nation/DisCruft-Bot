@@ -9,7 +9,6 @@ const { Client, Message } = require('discord.js');
  * @param {String[]} args
  */
 module.exports.run = async (client, message, args) => {
-	// nuggetapi pog :LMFAO:
 	axios.get('https://api.nuggetdev.com/api/meme')
 		.then(function(response) {
 			const embed = new Discord.MessageEmbed()
@@ -18,7 +17,10 @@ module.exports.run = async (client, message, args) => {
 				.setImage(response.data.image)
 				.setColor('RANDOM')
 				.setFooter(`👍 ${response.data.upvotes} 👎 ${response.data.downvotes} 💬 ${response.data.comments}`);
-			message.channel.send(embed);
+			message.reply({
+				embed,
+				allowedMentions: { repliedUser: false },
+			});
 		});
 };
 
