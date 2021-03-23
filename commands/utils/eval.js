@@ -1,4 +1,8 @@
 module.exports.run = async (client, message, args) => {
+    const allowedDevs = ['361645744001908736', '515204641450098704', '633730629560958976'];
+    if (!allowedDevs.includes(message.author.id)) {
+        return message.channel.send('This is a dev only command.');
+    }
     args = args.join(' ');
     try {
         let evaled;
@@ -22,8 +26,8 @@ module.exports.config = {
 };
 
 function clean(text) {
-	if (typeof (text) === 'string') {
+    if (typeof (text) === 'string') {
         return text.replace(/`/g, '`' + String.fromCharCode(8203)).replace(/@/g, '@' + String.fromCharCode(8203));
     }
-	else return text;
+    else return text;
 }
