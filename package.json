@@ -22,6 +22,8 @@
     "discord.js": "github:monbrey/discord.js#inline-replies",
     "dotenv": "^8.2.0",
     "eslint": "^7.22.0",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "moment": "^2.29.1",
+    "moment-duration-format": "^2.3.2"
   }
 }
