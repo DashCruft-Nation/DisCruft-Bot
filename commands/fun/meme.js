@@ -10,13 +10,13 @@ const { Client, Message } = require('discord.js');
  */
 module.exports.run = async (client, message, args) => {
 	axios.get('https://api.nuggetdev.com/api/meme')
-		.then(function(response) {
+		.then((res) => {
 			const embed = new Discord.MessageEmbed()
-				.setTitle(`${response.data.title}`)
-				.setURL(`${response.data.url}`)
-				.setImage(response.data.image)
+				.setTitle(`${res.data.title}`)
+				.setURL(`${res.data.url}`)
+				.setImage(res.data.image)
 				.setColor('RANDOM')
-				.setFooter(`👍 ${response.data.upvotes} 👎 ${response.data.downvotes} 💬 ${response.data.comments}`);
+				.setFooter(`👍 ${res.data.upvotes} 💬 ${res.data.comments}`);
 			message.reply({
 				embed,
 				allowedMentions: { repliedUser: false },
