@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 module.exports.run = async (client, message, args) => {
-	message.channel
-		.send({ embed: { description: 'Uh i think **' + message.author.username + '** feels bad man', color: 'RANDOM', timestamp: new Date() } })
+	message
+		.reply({ embed: { description: 'Uh i think **' + message.author.username + '** feels bad man', color: 'RANDOM', timestamp: new Date() }, allowedMentions: { repliedUser: false } })
 		.then((msg) => {
 			setTimeout(() => {
 				msg.edit({ embed: { description: `${message.author.username} are u ok? ur green at face 🤢`, color: 'RANDOM', timestamp: new Date() } });
@@ -31,11 +31,12 @@ module.exports.run = async (client, message, args) => {
 				msg.edit({ embed: { description: '🤮💨💨💨💨💨💨', color: 'RANDOM', timestamp: new Date() } });
 			}, 17000);
 			setTimeout(() => {
-				msg.edit({ embed: { description: 'the world have been expoled since ' + `${message.author.username} has been farted on all. 👼👼`, color: 'RANDOM', timestamp: new Date() } });
+				msg.edit({ embed: { description: 'the world have been exploded since ' + `${message.author.username} has been farted on all. 👼👼`, color: 'RANDOM', timestamp: new Date() } });
 			}, 20000);
 		});
 };
 module.exports.config = {
 	name: 'fart',
 	aliases: [],
+	description: 'Use this command to fart 🤮',
 };
