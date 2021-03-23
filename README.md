@@ -14,7 +14,7 @@
 - create a `.env` and put the botToken in there: `TOKEN=PLACE-TOKEN-HERE`
 - Do `npm i` in the console to install all dependencies
 - Start creating commands and helping! Make sure you follow all linter rules and check them..
-- The code must be clean and readable
+- The code must be clean and readable (IT MUST ALSO BE `FULLY TESTED` AS WELL!)
 - Make a pull request with your code once you have finished
 - You may also make an issue if something concerns you
 - Talk with `DashCruft`, `Swaggger`, or any other member of the org for any questions you may have in our [Discord Server](https://dashcruft.com/discord)
