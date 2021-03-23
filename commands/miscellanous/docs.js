@@ -11,18 +11,18 @@ const { Client, Message } = require('discord.js');
 module.exports.run = async (client, message, args) => {
 	let [query, branch] = args;
 
-	if (!query) return message.reply('No results!');
+	if (!query) return message.reply('No results!', { allowedMentions: { repliedUser: false } });
 	if (!branch) branch = 'master';
 
 	fetch(`https://djsdocs.sorta.moe/v2/embed?src=${branch}&q=${encodeURIComponent(query)}`)
 		.then(res => res.json())
 		.then(json => {
-			if (!json) return message.channel.send('Not found!');
+			if (!json) return message.reply('Not found!', { allowedMentions: { repliedUser: false } });
 
-			message.channel.send({ embed: json });
+			message.reply({ embed: json, allowedMentions: { repliedUser: false } });
 		})
 		.catch(() => {
-			message.channel.send('Couldn\'t fetch docs!');
+			message.reply('Couldn\'t fetch docs!', { allowedMentions: { repliedUser: false } });
 		});
 };
 
