@@ -1,3 +1,10 @@
+// eslint-disable-next-line no-unused-vars
+const { Client, Message } = require('discord.js');
+/**
+ * JSDOC
+ * @param {Client} client
+ * @param {Message} message
+ */
 module.exports = async (client, message) => {
 	if (message.author.bot) return;
 	if (message.author.bot || message.channel.type === 'dm') return;

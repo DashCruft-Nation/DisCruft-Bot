@@ -6,6 +6,6 @@ const client = new DisCruft({
 	ws: {
 		intents: Intents.ALL,
 	},
-	disableMentions: 'everyone'
+	disableMentions: 'everyone',
 });
 client.setup();
