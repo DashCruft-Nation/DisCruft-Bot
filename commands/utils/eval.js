@@ -1,7 +1,12 @@
 module.exports.run = async (client, message, args) => {
-	args = args.join(' ');
+    args = args.join(' ');
     try {
-        let evaled = eval(args);
+        let evaled;
+        
+        if (args.includes('await')) {
+            evaled = await eval(`(async () => { ${args} })();`);
+        }
+        else evaled = eval(args);
         if (typeof evaled !== 'string') {
             evaled = require('util').inspect(evaled);
         }
@@ -12,8 +17,8 @@ module.exports.run = async (client, message, args) => {
     }
 };
 module.exports.config = {
-	name: 'eval',
-	aliases: [],
+    name: 'eval',   
+    aliases: [],
 };
 
 function clean(text) {
