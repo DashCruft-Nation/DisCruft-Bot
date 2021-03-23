@@ -6,6 +6,7 @@ module.exports = class DisCruft extends Client {
 		this.commands = new Collection();
 		this.aliases = new Collection();
 		this.snipes = new Map();
+		this.db = new require('./database/db');
 		this.config = require('./config.json');
 	}
 
