@@ -1,23 +1,25 @@
+/* eslint-disable max-nested-callbacks */
 const fs = require('fs');
 
 function loadCommands(client) {
-    fs.readdir('commands/', (err, files) => {
+	fs.readdir('commands/', (err, cmdfolders) => {
 
-        if (err) console.log(err);
+		if (err) console.log(err);
 
-        const jsfile = files.filter(f => f.split('.').pop() === 'js');
-        if (jsfile.length <= 0) {
-            return console.log('Client Couldn\'t find any commands in commands Folder.');
-        }
-
-        jsfile.forEach((f, i) => {
-            const pull = require(`../commands/${f}`);
-            client.commands.set(pull.config.name, pull);
-            pull.config.aliases.forEach(alias => {
-                client.aliases.set(alias, pull.config.name);
-            });
-        });
-    });
+		if(!cmdfolders[0]) return console.log('Client couldn\'t find any commands in the commands folder!');
+		cmdfolders.forEach((cmdfolder) => {
+			fs.readdir(`commands/${cmdfolder}`, (err, cmds) => {
+				if (!cmd[0]) return console.log(`Client couldn't find any commands in the ${cmdfolder} folder!`);
+				cmds.forEach((cmd) => {
+					const pull = require(`../commands/${cmdfolder}/${cmd}`);
+					client.commands.set(pull.config.name, pull);
+					pull.config.aliases.forEach((alias) => {
+						client.aliases.set(alias, pull.config.name);
+					});
+				});
+			});
+		});
+	});
 }
 
 module.exports = loadCommands;
