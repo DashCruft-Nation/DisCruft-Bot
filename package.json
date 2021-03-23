@@ -2,7 +2,7 @@
   "name": "discruft-bot",
   "version": "1.0.0",
   "description": "The DashCruft Nation community Discord bot!",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
