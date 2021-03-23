@@ -17,13 +17,13 @@
   },
   "homepage": "https://github.com/DashCruft-Nation/DisCruft-Bot#readme",
   "dependencies": {
-    "axios": "^0.21.1",
     "canvas": "^2.7.0",
     "discord.js": "github:monbrey/discord.js#inline-replies",
     "dotenv": "^8.2.0",
     "eslint": "^7.22.0",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
+    "mongoose": "^5.11.15",
     "node-fetch": "^2.6.1",
     "pretty-ms": "^7.0.1"
   }
