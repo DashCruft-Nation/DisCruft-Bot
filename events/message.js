@@ -13,7 +13,7 @@ module.exports = async (client, message) => {
 	const cmd = messageArray[0];
 	const args = messageArray.slice(1);
 
-	const prefix = '$';
+	const prefix = '?';
 	const mentionembed = new MessageEmbed()
 		.setTitle('DisCruft bot info!')
 		.setDescription(`My prefix for ${message.guild.name} is \`?\`! Use \`?help\` for info about my commands!`)
