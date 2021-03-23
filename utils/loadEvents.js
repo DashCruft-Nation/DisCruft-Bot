@@ -1,7 +1,7 @@
 const fs = require('fs');
-
+const path = require('path');
 module.exports = client => {
-    fs.readdir("events/", (_err, files) => {
+    fs.readdir(path.join(__dirname, '../', 'events'), (_err, files) => {
         files.forEach((file) => {
             if (!file.endsWith(".js")) return;
             const event = require(`../events/${file}`);
@@ -10,4 +10,4 @@ module.exports = client => {
             delete require.cache[require.resolve(`../events/${file}`)];
         });
     });
- }
+}
