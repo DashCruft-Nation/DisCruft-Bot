@@ -8,4 +8,5 @@ const client = new DisCruft({
 	},
 	disableMentions: 'everyone',
 });
+
 client.setup();
