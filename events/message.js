@@ -12,7 +12,6 @@ module.exports = async (client, message) => {
 	const messageArray = message.content.split(' ');
 	const cmd = messageArray[0];
 	const args = messageArray.slice(1);
-
 	const prefix = '?';
 
 	if (!message.content.startsWith(prefix)) return;
