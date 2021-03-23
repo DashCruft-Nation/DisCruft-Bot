@@ -1,19 +1,11 @@
-const Discord = require('discord.js');
-const client = new Discord.Client({
+const { Intents } = require('discord.js');
+const DisCruft = require('./DisCruft');
+require('dotenv').config();
+const client = new DisCruft({
 	partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
 	ws: {
-		intents: Discord.Intents.ALL,
+		intents: Intents.ALL,
 	},
 	disableMentions: 'everyone'
 });
-const { loadCommands } = require('./utils/loadCommands');
-
-require('./utils/loadEvents')(client);
-require('dotenv').config();
-
-client.commands = new Discord.Collection();
-client.aliases = new Discord.Collection();
-client.snipes = new Map()
-
-loadCommands(client);
-client.login(process.env.TOKEN);
+client.setup();
