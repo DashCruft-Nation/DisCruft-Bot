@@ -12,11 +12,11 @@ module.exports.run = async (client, message, args) => {
 	const res = await fetch('https://api.nuggetdev.com/api/meme');
 	const json = await res.json();
 	const embed = new Discord.MessageEmbed()
-		.setTitle(`${json.data.title}`)
-		.setURL(`${json.data.url}`)
-		.setImage(json.data.image)
+		.setTitle(`${json.title}`)
+		.setURL(`${json.url}`)
+		.setImage(json.image)
 		.setColor('RANDOM')
-		.setFooter(`👍 ${json.data.upvotes} | 💬 ${json.data.comments}`);
+		.setFooter(`👍 ${json.upvotes} | 💬 ${json.comments}`);
 	message.reply({
 		embed,
 		allowedMentions: { repliedUser: false },
