@@ -33,7 +33,7 @@ module.exports.run = async (client, message, args) => {
       .setTitle("🎱  The Magic 8-Ball  🎱")
       .addField("Question", question)
       .addField("Answer",`${answers[Math.floor(Math.random() * answers.length)]}`)
-      .setColor("#a8e3e7");
+      .setColor("RANDOM");
     message.channel.send(embed);
   }
 
