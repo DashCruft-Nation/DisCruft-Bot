@@ -1,21 +1,20 @@
 const Discord = require("discord.js")
-const Commando = require('discord.js-commando')
 
 module.exports.run = ({ message, args, text, client, prefix, instance, channel }) => {
-  if (!message.member.hasPermission('MANAGE_NICKNAMES', 'CHANGE_NICKNAME')) return message.channel.send("You don't have permission to do this command!")
-    const target = message.mentions.users.first()
-    const member = message.guild.members.cache.get(target.id)
+     let dice = Math.floor(Math.random() * 6) + 1
+      - 1 +1 ;
 
-    args.shift()
-    const nickname = args.join(' ')
+    let diceembed = new Discord.MessageEmbed()
+    .setAuthor(message.author.tag)
+    .setColor("RANDOM")
+		.setTimestamp()    
+    .setDescription(`You got a **${dice}**`);
 
-    member.setNickname(nickname)
-
-    message.reply('You changed the nickname!')
+    message.channel.send(diceembed);
 }
 
 module.exports.config = {
-	name: 'nickname',
-	aliases: ['nick'],
-  description: "Changes the name of someone.",
+	name: 'dice',
+	aliases: ['diceroll'],
+  description: "Rolls dice",
 };
