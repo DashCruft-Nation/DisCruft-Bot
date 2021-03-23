@@ -7,7 +7,7 @@ class Database {
     constructor() {
         this.models = new Map();
         
-        mongoose.connect(process.env.MONGODB, {
+        mongoose.connect(process.env.MongoDB, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         });
