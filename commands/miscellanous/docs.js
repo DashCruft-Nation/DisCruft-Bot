@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 /* eslint-disable no-unused-vars */
 const fetch = require('node-fetch').default;
 const { Client, Message } = require('discord.js');
