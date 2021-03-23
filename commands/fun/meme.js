@@ -9,20 +9,18 @@ const { Client, Message } = require('discord.js');
  * @param {String[]} args
  */
 module.exports.run = async (client, message, args) => {
-	fetch('https://api.nuggetdev.com/api/meme')
-		.then(res => res.json())
-		.then((json) => {
-			const embed = new Discord.MessageEmbed()
-				.setTitle(`${json.data.title}`)
-				.setURL(`${json.data.url}`)
-				.setImage(json.data.image)
-				.setColor('RANDOM')
-				.setFooter(`👍 ${json.data.upvotes} | 💬 ${json.data.comments}`);
-			message.reply({
-				embed,
-				allowedMentions: { repliedUser: false },
-			});
-		});
+	const res = await fetch('https://api.nuggetdev.com/api/meme');
+	const json = await res.json();
+	const embed = new Discord.MessageEmbed()
+		.setTitle(`${json.title}`)
+		.setURL(`${json.url}`)
+		.setImage(json.image)
+		.setColor('RANDOM')
+		.setFooter(`👍 ${json.upvotes} | 💬 ${json.comments}`);
+	message.reply({
+		embed,
+		allowedMentions: { repliedUser: false },
+	});
 };
 
 module.exports.config = {
