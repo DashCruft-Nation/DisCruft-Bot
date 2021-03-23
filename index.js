@@ -4,7 +4,7 @@ const client = new Discord.Client({
 	ws: {
 		intents: Discord.Intents.ALL,
 	},
-	disableMentions: 'everyone'
+	disableMentions: 'everyone',
 });
 const { loadCommands } = require('./utils/loadCommands');
 
@@ -13,7 +13,7 @@ require('dotenv').config();
 
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
-client.snipes = new Map()
+client.snipes = new Map();
 
 loadCommands(client);
 client.login(process.env.TOKEN);
