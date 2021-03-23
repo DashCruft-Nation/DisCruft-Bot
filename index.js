@@ -19,12 +19,6 @@ client.distube = distube = new DisTube(client, {
 	leaveOnFinish: false
 });
 
-const mongoose = require('mongoose');
-mongoose.connect(process.env.MongoDB, {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-});
-
 client.distube
 	.on("playSong", (message, queue, song) => message.channel.send(
 		`🎧 Playing \`${song.name}\` - \`${song.formattedDuration}\`\nRequested by: ${song.user}`
