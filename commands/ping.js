@@ -1,4 +1,10 @@
 /* eslint-disable no-unused-vars */
+const { Client, Message } = require("discord.js");
+/**
+ * JSDOC
+ * @param {Client} client 
+ * @param {Message} message 
+ */
 module.exports.run = async (client, message, args) => {
 	const latency = new Date().getTime() - message.createdTimestamp;
 	const apilatency = Math.round(client.ws.ping);

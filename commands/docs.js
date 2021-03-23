@@ -1,5 +1,11 @@
+/* eslint-disable no-unused-vars */
 const fetch = require('node-fetch').default;
-
+const { Client, Message } = require('discord.js');
+/**
+ * JSDOC
+ * @param {Client} client
+ * @param {Message} message
+ */
 module.exports.run = async (client, message, args) => {
 	let [query, branch] = args;
 
