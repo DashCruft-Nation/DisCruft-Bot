@@ -13,6 +13,6 @@ module.exports = class DisCruft extends Client {
 	setup() {
 		require('./utils/loadCommands')(this);
 		require('./utils/loadEvents')(this);
-		this.login('NzQxMDAwODY1Mjg4MjkwNDM1.XyxM1Q.deoXvo_y4jo7M89X2uh-Drz0WLU');
+		this.login(process.env.TOKEN);
 	}
 };
