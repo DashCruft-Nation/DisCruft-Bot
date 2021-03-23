@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args) => {
 		return message.reply('The user isnt banned!', { allowedMentions: { repliedUser: false } });
 	}
 	message.guild.members.unban(toUnBan);
-	message.channel.send(`${toUnBan.username} is now unbanned!`);
+	message.reply(`${toUnBan.username} is now unbanned!`, { allowedMentions: { repliedUser: false } });
 };
 module.exports.config = {
 	name: 'unban',
