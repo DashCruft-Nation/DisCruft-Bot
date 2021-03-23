@@ -1,6 +1,6 @@
 const Discord = require("discord.js")
 
-module.exports.run = ({ message, args, text, client, prefix, instance, channel }) => {
+module.exports.run = async (client, message, args) => {
   let dice = Math.floor(Math.random() * 6) + 1
     - 1 + 1;
 
