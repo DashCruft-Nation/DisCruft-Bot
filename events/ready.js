@@ -6,6 +6,6 @@ const { Client, Message } = require('discord.js');
  */
 module.exports = client => {
 	console.log(`${client.user.tag} is online!`);
-	client.user.setStatus('?help', { type: 'WATCHING' });
+	client.user.setActivity('?help', { type: 'WATCHING' });
 };
 
