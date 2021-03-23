@@ -1,4 +1,5 @@
 ## DisCruft-Bot
+## READ [THIS ANNOUNCEMENT](https://discord.com/channels/644764850706448384/660623947620155423/823783669575581697) | If you have access, please do not merge PRs without the permission of another person!
 ### The official community bot for the DashCruft Nation. Here is how you can contribute:
 - You **HAVE** to be a member in our [Offical Discord Server](https://dashcruft.com/discord)!
 - Everyone can commit their changes as they wish. It'll be checked and pushed by the mods!
