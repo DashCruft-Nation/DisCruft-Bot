@@ -5,7 +5,6 @@ const { Client, Message } = require('discord.js');
  * @param {Client} client
  */
 module.exports = client => {
-	// what's the point of client if no use :ye:
 	console.log(`${client.user.tag} is online!`);
 	client.user.setStatus('?help', { type: 'WATCHING' });
 };
