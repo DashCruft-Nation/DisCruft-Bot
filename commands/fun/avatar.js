@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
 	const embed = new Discord.MessageEmbed()
 		.setTitle(`${target.user.username}'s avatar!`)
 		.setColor('RANDOM')
-		.setImage(target.user.displayAvatarURL({ size: 4096, dynamic: true }));
+		.setImage(target.user.displayAvatarURL({ size: 1024, dynamic: true }));
 	message.reply({ embed: embed, allowedMentions: { repliedUser: false } });
 };
 module.exports.config = {

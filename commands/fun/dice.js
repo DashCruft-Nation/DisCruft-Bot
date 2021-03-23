@@ -5,7 +5,7 @@ module.exports.run = ({ message, args, text, client, prefix, instance, channel }
     - 1 + 1;
 
   let diceembed = new Discord.MessageEmbed()
-    .setAuthor(message.author.user.tag)
+    .setAuthor(message.member.user.tag)
     .setColor("RANDOM")
     .setTimestamp()
     .setDescription(`You got a **${dice}**`);
