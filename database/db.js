@@ -31,3 +31,5 @@ class Database {
         return this.models.get(model);
     }
 }
+
+module.exports = Database;
