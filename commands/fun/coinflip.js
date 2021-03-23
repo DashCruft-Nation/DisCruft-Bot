@@ -11,10 +11,11 @@ module.exports.run = async (client, message) => {
 		.setTitle('½  Coinflip  ½')
 		.setDescription(`I flipped a coin for you, ${message.member}. It was **${result}**!`)
 		.setColor('RANDOM');
-	message.channel.send(embed);
+	message.reply({ embed: embed, allowedMentions: { repliedUser: false } });
 };
 
 module.exports.config = {
 	name: 'coinflip',
 	aliases: ['coin', 'cf', 'flip'],
+	description: 'Flip a coin and make decisions!',
 };
