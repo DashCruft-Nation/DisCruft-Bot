@@ -2,8 +2,9 @@
 const { Client, Message } = require('discord.js');
 /**
  * JSDOC
- * @param {Client} client
- * @param {Message} message
+ * @param {Client} client 
+ * @param {Message} message 
+ * @param {String[]} args
  */
 module.exports.run = async (client, message, args) => {
 	const latency = new Date().getTime() - message.createdTimestamp;
