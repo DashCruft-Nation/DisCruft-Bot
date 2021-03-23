@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const Discord = require('discord.js');
 const prettyMs = require('pretty-ms');
 module.exports.run = async (client, message, args) => {
@@ -6,7 +7,7 @@ module.exports.run = async (client, message, args) => {
         .setAuthor('DisCruft bot stats')
         .addField('__Cache__\n', `**Guilds**: ${client.guilds.cache.size} \n\n`, true)
         .addField('__Uptime__\n', `**Process**: ${prettyMs(process.uptime() * 1000)}`, true)
-        .addField('__Movement__\n', `**API Latency**: ${Math.round(bot.ws.ping)}\n**Bot Latency**: ${msg.createdTimestamp - message.createdTimestamp}ms`, true);
+        .addField('__Movement__\n', `**API Latency**: ${Math.round(client.ws.ping)}\n**Bot Latency**: ${msg.createdTimestamp - message.createdTimestamp}ms`, true);
     message.reply(embed);
 };
 module.exports.config = {
