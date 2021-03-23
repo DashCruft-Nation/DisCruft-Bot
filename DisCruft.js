@@ -1,4 +1,5 @@
 const { Collection, Client } = require('discord.js');
+const DB = require('./database/db');
 module.exports = class DisCruft extends Client {
 	constructor(options) {
 		super(options);
@@ -6,6 +7,7 @@ module.exports = class DisCruft extends Client {
 		this.commands = new Collection();
 		this.aliases = new Collection();
 		this.snipes = new Map();
+		this.db = new DB;
 		this.config = require('./config.json');
 	}
 
