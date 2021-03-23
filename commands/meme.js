@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 const Discord = require('discord.js');
 const axios = require('axios');
-const { Client, Message } = require("discord.js");
+const { Client, Message } = require('discord.js');
 /**
  * JSDOC
- * @param {Client} client 
- * @param {Message} message 
+ * @param {Client} client
+ * @param {Message} message
  * @param {String[]} args
  */
 module.exports.run = async (client, message, args) => {
