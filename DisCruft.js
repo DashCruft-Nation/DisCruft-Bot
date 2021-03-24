@@ -50,6 +50,6 @@ module.exports = class DisCruft extends Client {
 				console.error(e)
 				message.channel.send("An error encountered: " + e);
 			});
-		this.login("ODIzODY5MjE4MDYyNzI5MjI2.YFnGAA.vYDp3lr8xqK44PVvy_jarsJku9A");
+		this.login(lol);
 	}
 };
