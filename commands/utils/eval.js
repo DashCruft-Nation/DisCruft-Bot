@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args) => {
 		}
 		else {evaled = eval(args);}
 		if (typeof evaled !== 'string') {
-			evaled = require('util').inspect(evaled);
+			evaled = require('util').inspect(evaled, { depth: 0 });
 		}
 		message.channel.send(`\`\`\`xl\n${clean(evaled)}\n\`\`\``);
 	}
