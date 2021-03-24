@@ -50,6 +50,6 @@ module.exports = class DisCruft extends Client {
 				console.error(e)
 				message.channel.send("An error encountered: " + e);
 			});
-		this.login(lol);
+		this.login(process.env.TOKEN);
 	}
 };
