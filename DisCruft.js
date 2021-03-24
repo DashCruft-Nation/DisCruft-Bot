@@ -2,6 +2,7 @@ const {
 	Collection,
 	Client
 } = require('discord.js');
+
 module.exports = class DisCruft extends Client {
 	constructor(options) {
 		super(options);
@@ -10,6 +11,7 @@ module.exports = class DisCruft extends Client {
 		this.aliases = new Collection();
 		this.snipes = new Map();
 		this.config = require('./config.json');
+		this.cooldownFunction = require("./functions/functions");
 	}
 
 
