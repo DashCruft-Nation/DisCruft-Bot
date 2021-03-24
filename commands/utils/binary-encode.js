@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args) => {
 	).json();
 	return message.channel.send(new MessageEmbed()
 		.setTitle('Here is your encoded binary!')
-		.addField('Output:', binary),
+		.setDescription(`**Output:**\n${binary}`)
 	);
 };
 module.exports.config = {
