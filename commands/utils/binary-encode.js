@@ -11,12 +11,12 @@ module.exports.run = async (client, message, args) => {
 	).json();
 	const embed = new MessageEmbed()
 		.setTitle('Here is your encoded binary!')
-		.setDescription(`**Output:**\n${binary}`);
+		.setDescription(`**Output:**\n${binary}`)
+		.setColor('RANDOM');
 	return message.reply({ embed: embed, allowedMentions: { repliedUser: false } });
-
 };
 module.exports.config = {
 	name: 'binary-encode',
 	aliases: [],
-	description: 'Sends your text into binary,',
+	description: 'Sends your text into binary',
 };
