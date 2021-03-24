@@ -1,8 +1,9 @@
 const {
-	Intents
+	Intents, Message
 } = require('discord.js');
 const DisCruft = require('./DisCruft');
 const DisTube = require('distube');
+
 require('dotenv').config();
 const client = new DisCruft({
 	partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
@@ -17,5 +18,8 @@ client.distube = distube = new DisTube(client, {
 	emitNewSongOnly: true,
 	leaveOnFinish: false
 });
+
+const mongoose = require('mongoose')
+mongoose.connect(process.env.MongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
 
 client.setup();
