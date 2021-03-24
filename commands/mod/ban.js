@@ -16,6 +16,8 @@ module.exports.run = async (client, message, args) => {
 		return message.reply('Can\'t find specefied member! Provide a valid id', { allowedMentions: { repliedUser: false } });
 	});
 	if (check) return;
+	if(target.id === message.author.id) return message.reply('Why would you want to ban yourself?!', { allowedMentions: { repliedUser: false } });
+	if(target.id === client.user.id) return message.reply('Why would you want to ban me?!', { allowedMentions: { repliedUser: false } });
 	const reason = args.slice(1).join(' ');
 	if (!target.bannable) return message.reply('Can\'t ban specified member! Make sure I\'m above them in the heirarchy', { allowedMentions: { repliedUser: false } });
 	const confirmationEmbed = new MessageEmbed()
