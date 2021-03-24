@@ -14,7 +14,7 @@ module.exports.run = async (client, message, args) => {
 	fetch('https://api.snowflakedev.xyz/api/cat', {
 		headers: {
 			// Change this API key pls
-			'Authorization': 'MzY3OTA4NDg2NzgyMTI0MDMz.MTYxNjU0NjUxOTA0Nw==.f06e35dfdc15e4d37b49c0ef0a9984ed'
+			'Authorization': ''
 		}
 	})
 		.then(res => res.buffer())
