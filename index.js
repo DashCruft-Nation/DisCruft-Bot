@@ -1,5 +1,5 @@
 const {
-	Intents, Message
+	Intents,
 } = require('discord.js');
 const DisCruft = require('./DisCruft');
 const DisTube = require('distube');
@@ -12,14 +12,14 @@ const client = new DisCruft({
 	},
 	disableMentions: 'everyone',
 });
-client.distube = distube = new DisTube(client, {
+client.distube = new DisTube(client, {
 	leaveOnEmpty: false,
 	searchSongs: false,
 	emitNewSongOnly: true,
-	leaveOnFinish: false
+	leaveOnFinish: false,
 });
 
-const mongoose = require('mongoose')
-mongoose.connect(process.env.MongoDB, { useNewUrlParser: true, useUnifiedTopology: true })
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 client.setup();
