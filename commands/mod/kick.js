@@ -18,19 +18,19 @@ module.exports.run = async (client, message, args) => {
 			},
 		});
 	}
-	if (!message.member.hasPermission('KICK_MEMBERS')) message.reply('You do not have permission to kick members!');
+	if (!message.member.hasPermission('KICK_MEMBERS')) return message.reply('You do not have permission to kick members!', { allowedMentions: { repliedUser: false } });
 	const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
 	const reason = args.slice(1).join(' ') || 'No reason provided!';
-	if (!member) {message.reply('Please provide a member to kick!', { allowedMentions: { repliedUser: false } });}
-	else {
-		member.kick(reason + `\nKicked by: ${message.author.tag} | ${message.author.id}`).then(mem => {
-			message.reply(`Kicked **${mem.user.tag}** from the server successfully!\nAction done by ${message.author.toString()}`, { allowedMentions: { repliedUser: false } });
-		});
-	}
+	if (!member) return message.reply('Please provide a member to kick!', { allowedMentions: { repliedUser: false } });
+	if(member.id === message.author.id) return message.reply('You can\'t kick yourself!', { allowedMentions: { repliedUser: false } });
+	if(!member.bannable) return message.reply('Cannot kick that user!', { allowedMentions: { repliedUser: false } });
+	member.kick(reason + `\nKicked by: ${message.author.tag} | ${message.author.id}`).then(mem => {
+		message.reply(`Kicked **${mem.user.tag}** from the server successfully!\nAction done by ${message.author.toString()}`, { allowedMentions: { repliedUser: false } });
+	});
 };
 
 module.exports.config = {
 	name: 'kick',
-	aliases: ['kick members'],
+	aliases: [],
 	description: 'Bans a member! Do it if you think someone is bannable!!',
 };
