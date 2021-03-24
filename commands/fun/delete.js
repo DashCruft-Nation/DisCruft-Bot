@@ -18,6 +18,6 @@ module.exports.run = async (client, message, args) => {
 
 module.exports.config = {
 	name: 'delete',
-	aliases: ['nukes channels'],
+	aliases: [],
 	description: 'Use the command to delete channels go to the channel you want to delete and sinply type ***?delete***',
 };

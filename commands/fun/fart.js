@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 
+const Discord = require('discord.js');
+
 const usedCommand = new Set();
 
 module.exports.run = async (client, message, args) => {
