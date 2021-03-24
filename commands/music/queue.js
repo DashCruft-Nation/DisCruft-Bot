@@ -1,4 +1,11 @@
 const Discord = require('discord.js');
+/**
+ * JSDOC
+ * @param {Discord.Client} client
+ * @param {Discord.Message} message
+ * @param {String} args
+ * @returns
+ */
 module.exports.run = async (client, message, args) => {
 	if (!message.member.voice.channel) {
 		return message.reply('You must be in a voice channel to use this command.', {
@@ -15,14 +22,14 @@ module.exports.run = async (client, message, args) => {
 		});
 	}
 
-	const queue = await client.distube.getQueue(message);
+	const queue = client.queue.get(message.guild.id);
 
 	if (!queue || queue.songs.length === 1) return message.channel.send('> :notes: **Nothing is in queue!**');
 
 	const embed = new Discord.MessageEmbed()
 		.setTitle(`🎶 **Current Queue** | ${queue.songs.length - 1} entries`)
 		.setDescription(`${(queue.songs.slice(1, 11).map((song, i) => {
-			return `${`\`${i + 1}\``} | \`(${song.formattedDuration})\` **${song.name}** - ${song.user}`;
+			return `${`\`${i + 1}\``} | \`(${i})\` **${song.title}** - ${song.requestedBy.toString()}`;
 		}).join('\n'))}`);
 	message.reply({
 		embed: embed,
@@ -35,5 +42,5 @@ module.exports.run = async (client, message, args) => {
 module.exports.config = {
 	name: 'queue',
 	aliases: ['q', 'list'],
-	description: 'skips to the next music in queue if any!',
+	description: 'Shows the music queue of your server if any!',
 };
