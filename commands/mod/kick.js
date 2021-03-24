@@ -20,6 +20,7 @@ module.exports.run = async (client, message, args) => {
       message.reply("Stop bitchin around when u know u dont have da perms bru")
     }
   }
+};
 
 module.exports.config = {
 	name: 'kick',
