@@ -11,7 +11,7 @@ module.exports = class DisCruft extends Client {
 		this.aliases = new Collection();
 		this.snipes = new Map();
 		this.config = require('./config.json');
-		this.cooldownFunction = require('./functions/functions');
+		this.functions = require('./functions/functions');
 	}
 
 
