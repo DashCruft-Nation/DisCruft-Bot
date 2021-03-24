@@ -14,6 +14,5 @@ module.exports.run = async (client, message, args) => {
 module.exports.config = {
 	name: 'howgae',
 	aliases: ['gayrate'],
-	description: 'Check how gay you are! promise it never lies',
 	description: 'check how gay you are',
 };
