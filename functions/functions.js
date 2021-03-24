@@ -13,3 +13,8 @@ function clean(text) {
 	}
 	else {return text;}
 }
+
+module.exports = {
+	clean,
+	pepeSize
+};
