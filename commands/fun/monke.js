@@ -20,4 +20,5 @@ module.exports.run = async (bot, message, args) => {
 module.exports.config = {
 	name: 'monke',
 	aliases: ['monkey'],
+	description: 'Have a nice monkey picture!',
 };

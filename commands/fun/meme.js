@@ -18,7 +18,7 @@ module.exports.run = async (client, message, args) => {
 		.setColor('RANDOM')
 		.setFooter(`👍 ${json.upvotes} | 💬 ${json.comments}`);
 	message.reply({
-		embed,
+		embed: embed,
 		allowedMentions: { repliedUser: false },
 	});
 };

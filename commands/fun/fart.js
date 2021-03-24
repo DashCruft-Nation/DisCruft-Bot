@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 
+const Discord = require('discord.js');
+
 const usedCommand = new Set();
 
 module.exports.run = async (client, message, args) => {
@@ -19,6 +21,9 @@ module.exports.run = async (client, message, args) => {
 				},
 			})
 			.then((msg) => {
+				/**
+				 * @param {Discord.Message} msg
+				 */
 				setTimeout(() => {
 					msg.edit({
 						embed: {
