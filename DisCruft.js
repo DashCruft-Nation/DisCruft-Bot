@@ -1,6 +1,6 @@
 const {
 	Collection,
-	Client
+	Client,
 } = require('discord.js');
 
 module.exports = class DisCruft extends Client {
@@ -11,7 +11,7 @@ module.exports = class DisCruft extends Client {
 		this.aliases = new Collection();
 		this.snipes = new Map();
 		this.config = require('./config.json');
-		this.cooldownFunction = require("./functions/functions");
+		this.cooldownFunction = require('./functions/functions');
 	}
 
 
@@ -20,20 +20,20 @@ module.exports = class DisCruft extends Client {
 		require('./utils/loadEvents')(this);
 
 		this.distube
-			.on("playSong", (message, queue, song) => message.channel.send(
-				`🎧 Playing \`${song.name}\` - \`${song.formattedDuration}\`\nRequested by: ${song.user}`
+			.on('playSong', (message, queue, song) => message.channel.send(
+				`🎧 Playing \`${song.name}\` - \`${song.formattedDuration}\`\nRequested by: ${song.user}`,
 			))
-			.on("addSong", (message, queue, song) => message.reply(
+			.on('addSong', (message, queue, song) => message.reply(
 				`🎧 Added \`${song.name}\` - \`${song.formattedDuration}\` to the queue by ${song.user}`, {
 					allowedMentions: {
-						repliedUser: false
-					}
+						repliedUser: false,
+					},
 				}))
-			.on("error", (message, e) => {
-				console.error(e)
-				message.channel.send("An error encountered: " + e);
+			.on('error', (message, e) => {
+				console.error(e);
+				message.channel.send('An error encountered: ' + e);
 			});
 
-		this.login(process.env.TOKEN);
+		this.login('NzQxMDAwODY1Mjg4MjkwNDM1.XyxM1Q.AbzhEj4b-gBdJdxYsNwtjsJ3ItQ');
 	}
 };

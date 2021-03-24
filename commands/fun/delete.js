@@ -8,11 +8,11 @@ const { Client, Message, MessageEmbed } = require('discord.js');
  */
 module.exports.run = async (client, message, args) => {
 	if (!message.guild.me.hasPermission('MANAGE_CHANNELS')) return message.reply('I don\'t have permission to delete channels to gimme right now', { allowedMentions: { repliedUser: false } });
-  	if (message.member.hasPermission("MANAGE_CHANNELS")) {
-message.channel.delete();
-	} else
-	{
-		messege.channel.send("Bruh no perrmission")
+	if (message.member.hasPermission('MANAGE_CHANNELS')) {
+		message.channel.delete();
+	}
+	else {
+		message.channel.send('Bruh no perrmission');
 	}
 };
 
