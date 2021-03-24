@@ -32,5 +32,5 @@ module.exports.run = async (client, message, args) => {
 module.exports.config = {
 	name: 'kick',
 	aliases: [],
-	description: 'Bans a member! Do it if you think someone is bannable!!',
+	description: 'Kicks a member! Do it if you think someone is kickable!!',
 };
