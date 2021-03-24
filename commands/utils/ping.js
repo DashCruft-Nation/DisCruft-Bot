@@ -10,7 +10,7 @@ module.exports.run = async (client, message, args) => {
 	const latency = new Date().getTime() - message.createdTimestamp;
 	const apilatency = Math.round(client.ws.ping);
 
-	message.reply({
+	return message.reply({
 		embed: {
 			title: 'Pong 🏓',
 			description: `latency: \`${latency}ms\`\nAPI latency: \`${apilatency}ms\``,
@@ -22,4 +22,5 @@ module.exports.run = async (client, message, args) => {
 module.exports.config = {
 	name: 'ping',
 	aliases: ['latency', 'ping'],
+	description: 'Shows the ping of the bot!',
 };
