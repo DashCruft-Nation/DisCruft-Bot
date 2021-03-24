@@ -3,7 +3,6 @@ function pepeSize() {
 	const random = Math.floor(Math.random() * 13) + 1;
 	const randomEqualSigns = '='.repeat(random);
 	const pepesize = `8${randomEqualSigns}>`;
-
 	return pepesize;
 }
 
@@ -13,3 +12,7 @@ function clean(text) {
 	}
 	else {return text;}
 }
+module.exports = {
+	pepeSize: pepeSize,
+	clean: clean,
+};
