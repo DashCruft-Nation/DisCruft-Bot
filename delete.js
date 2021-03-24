@@ -18,6 +18,6 @@ message.channel.delete();
 
 module.exports.config = {
 	name: 'delete',
-	aliases: ['delete channels'],
+	aliases: ['nukes channels'],
 	description: 'Use the command to delete channels go to the channel you want to delete and sinply type ***?delete***',
 };
