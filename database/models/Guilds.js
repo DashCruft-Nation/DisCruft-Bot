@@ -1,3 +1,5 @@
+// bro why fat indent
+
 const { Schema, model } = require('mongoose');
 
 const Guilds = new Schema({
