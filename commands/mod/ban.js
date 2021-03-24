@@ -21,7 +21,7 @@ module.exports.run = async (client, message, args) => {
 	const confirmationEmbed = new MessageEmbed()
 		.setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
 		.setTitle(`Are you sure you want to ban ${target.user.tag} for reason - ${reason}?`);
-	const mes = await message.channel.send(confirmationEmbed);
+	const mes = await message.reply({ embed: confirmationEmbed, allowedMentions: { repliedUser: false } });
 	await mes.react('✔️');
 	await mes.react('✖️');
 
@@ -51,4 +51,5 @@ module.exports.run = async (client, message, args) => {
 module.exports.config = {
 	name: 'ban',
 	aliases: ['bam'],
+	description: 'Bans a member! Do it if you think someone is bannable!!',
 };

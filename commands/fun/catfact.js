@@ -13,11 +13,12 @@ module.exports.run = async (client, message, args) => {
 	fetch('https://api.monkedev.com/facts/cat?key=kPESu2IOtzHFt3AsBOnRfTRZu')
 		.then(response => response.json())
 		.then(data => {
-			message.channel.send(data.fact);
+			message.reply(data.fact, { allowedMentions: { repliedUser: false } });
 		});
 };
 
 module.exports.config = {
 	name: 'catfact',
 	aliases: [],
+	description: 'Cat facts for you to know about!',
 };

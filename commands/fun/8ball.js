@@ -24,19 +24,18 @@ module.exports.run = async (client, message, args) => {
 		'Outlook not so good.',
 		'Very doubtful.',
 	];
-
+	if (!args[0]) {return message.reply('Please provide a question to ask', { allowedMentions: { repliedUser: false } });}
 	const question = args.join(' ');
-	if (!question) {return message.send('Please provide a question to ask');}
-
 	const embed = new Discord.MessageEmbed()
 		.setTitle('🎱  The Magic 8-Ball  🎱')
 		.addField('Question', question)
 		.addField('Answer', `${answers[Math.floor(Math.random() * answers.length)]}`)
 		.setColor('RANDOM');
-	message.channel.send(embed);
+	message.reply({ embed: embed, allowedMentions: { repliedUser: false } });
 };
 
 module.exports.config = {
 	name: '8ball',
 	aliases: [],
+	description: 'The command which will tell the future!',
 };

@@ -19,9 +19,10 @@ module.exports.run = async (client, message, args) => {
 
 	ctx.drawImage(avatar, 285, 260, 300, 300);
 	const attachment = new MessageAttachment(canvas.toBuffer(), `Dababy${member.user.username}.jpg`);
-	message.channel.send(attachment);
+	message.reply({ files: [attachment], allowedMentions: { repliedUser: false } });
 };
 module.exports.config = {
 	name: 'dababy',
 	aliases: [],
+	description: 'You know what this is...',
 };
