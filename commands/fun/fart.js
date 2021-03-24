@@ -21,9 +21,6 @@ module.exports.run = async (client, message, args) => {
 				},
 			})
 			.then((msg) => {
-				/**
-				 * @param {Discord.Message} msg
-				 */
 				setTimeout(() => {
 					msg.edit({
 						embed: {
