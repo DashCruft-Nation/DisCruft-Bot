@@ -34,6 +34,6 @@ module.exports = class DisCruft extends Client {
 				message.channel.send('An error encountered: ' + e);
 			});
 
-		this.login('NzQxMDAwODY1Mjg4MjkwNDM1.XyxM1Q.AbzhEj4b-gBdJdxYsNwtjsJ3ItQ');
+		this.login(process.env.TOKEN);
 	}
 };
