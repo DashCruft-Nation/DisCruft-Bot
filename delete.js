@@ -7,8 +7,8 @@ const { Client, Message, MessageEmbed } = require('discord.js');
  * @param {String[]} args
  */
 module.exports.run = async (client, message, args) => {
-	if (!message.guild.me.hasPermission('ADMINISTRATOR')) return message.reply('I don\'t have permission to delete channels to gimme right now', { allowedMentions: { repliedUser: false } });
-  	if (message.member.hasPermission("ADMINISTRATOR")) {
+	if (!message.guild.me.hasPermission('MANAGE_CHANNEL')) return message.reply('I don\'t have permission to delete channels to gimme right now', { allowedMentions: { repliedUser: false } });
+  	if (message.member.hasPermission("MANAGE_CHANNEL")) {
 message.channel.delete();
 	} else
 	{
