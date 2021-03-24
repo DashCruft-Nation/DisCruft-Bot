@@ -10,7 +10,7 @@ const Discord = require('discord.js');
 module.exports.run = async (client, message, args) => {
 	const cross = client.emojis.cache.get('804985876609368065');
 	if (!message.guild.me.hasPermission('MANAGE_MESSAGES')) return message.reply('I do not have permissions to delete messages!', { allowedMentions: { repliedUser: false } });
-	if (!message.member.permissions.has('MANAGE_MESSAGES')) return message.channel.send(`${cross} You Need The Permission \`MANAGE_MESSAGES\` to use This Command!`, { allowedMentions: { repliedUser: false } });
+	if (!message.member.permissions.has('MANAGE_MESSAGES')) return message.reply(`${cross} You Need The Permission \`MANAGE_MESSAGES\` to use This Command!`, { allowedMentions: { repliedUser: false } });
 
 	const user = message.mentions.users.first();
 	if (typeof user === 'undefined') {
@@ -39,7 +39,7 @@ module.exports.run = async (client, message, args) => {
 					m.delete({ timeout: 1000 * 5 });
 				});
 			}).catch(error => {
-				message.channel.send(`There was an error deleting the messages!\nError: ${error})`);
+				message.reply(`There was an error deleting the messages!\nError: ${error})`, { allowedMentions: { repliedUser: false } });
 			});
 		});
 	}

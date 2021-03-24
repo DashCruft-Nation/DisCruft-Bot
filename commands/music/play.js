@@ -1,4 +1,11 @@
 const Discord = require('discord.js');
+/**
+ * JSDOC
+ * @param {Discord.Client} client
+ * @param {Discord.Message} message
+ * @param {String} args
+ * @returns
+ */
 module.exports.run = async (client, message, args) => {
 	if (!message.member.voice.channel) {
 		return message.reply('You must be in a voice channel to use this command.', {
