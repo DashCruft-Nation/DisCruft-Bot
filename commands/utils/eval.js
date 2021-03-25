@@ -1,5 +1,4 @@
 module.exports.run = async (client, message, args) => {
-	const { clean } = require('../../functions/functions');
 	const allowedDevs = ['361645744001908736', '515204641450098704', '633730629560958976', '571712139606360069'];
 	if (!allowedDevs.includes(message.author.id)) {
 		return message.channel.send('This is a dev only command.');
@@ -25,3 +24,10 @@ module.exports.config = {
 	name: 'eval',
 	aliases: [],
 };
+
+function clean(text) {
+	if (typeof (text) === 'string') {
+		return text.replace(/`/g, '`' + String.fromCharCode(8203)).replace(/@/g, '@' + String.fromCharCode(8203));
+	}
+	else {return text;}
+}
