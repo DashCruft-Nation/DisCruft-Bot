@@ -16,7 +16,7 @@ _The official community bot for the DashCruft Nation._
 ## Setup
 
 - Fork the repository
-- create a `.env` and put the botToken in there: `TOKEN=PLACE-TOKEN-HERE`
+- create a `.env` and put the botToken and mongoDB connection string in there: `TOKEN=PLACE-TOKEN-HERE` `MongoDB=CONNECTION-STRING-HERE`
 - Do `npm i` in the console to install all dependencies
 - Start creating commands and helping! Make sure you follow all linter rules and check them..
 - The code must be clean and readable (IT MUST ALSO BE `FULLY TESTED` AS WELL!)
