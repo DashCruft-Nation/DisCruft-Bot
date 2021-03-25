@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 const { Client, Message, MessageEmbed } = require('discord.js');
-const { pepeSize } = require('../../functions/functions');
 /**
  * JSDOC
  * @param {Client} client
@@ -8,10 +7,15 @@ const { pepeSize } = require('../../functions/functions');
  * @param {String[]} args
  */
 module.exports.run = async (client, message, args) => {
+
+	const random = Math.floor(Math.random() * 13) + 1;
+	const randomEqualSigns = '='.repeat(random);
+	const pepesize = `8${randomEqualSigns}>`;
+
 	if (!args[0]) {
 		const embed = new MessageEmbed()
 			.setTitle('Your PP size!')
-			.addField(`**${pepeSize()}**`, 'Pretty smol pp')
+			.addField(`**${pepesize}**`, 'Pretty smol pp')
 			.setThumbnail(message.author.displayAvatarURL())
 			.setTimestamp()
 			.setColor('RANDOM');
@@ -25,7 +29,7 @@ module.exports.run = async (client, message, args) => {
 			message.guild.member(await client.users.fetch(args[0]));
 		const embed = new MessageEmbed()
 			.setTitle(`PP size for ${target.user.tag}`)
-			.addField(`**${pepeSize()}**`, 'Pretty smol pp')
+			.addField(`**${pepesize}**`, 'Pretty smol pp')
 			.setThumbnail(target.user.displayAvatarURL())
 			.setTimestamp()
 			.setColor('RANDOM');
