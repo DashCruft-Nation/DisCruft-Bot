@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable no-unused-vars */
 const Discord = require('discord.js');
 const { Client, Message } = require('discord.js');
@@ -9,16 +10,22 @@ const fetch = require('node-fetch').default;
  * @param {String[]} args
  */
 module.exports.run = async (client, message, args) => {
-	// Monkedev api for the cat facts because cats are the best animal
-	fetch('https://api.monkedev.com/facts/cat?key=kPESu2IOtzHFt3AsBOnRfTRZu')
-		.then(response => response.json())
+	// Snowflake API for the cat images
+	fetch('https://api.snowflakedev.xyz/api/cat', {
+		headers: {
+			// Change this API key pls
+			'Authorization': ''
+		}
+	})
+		.then(res => res.buffer())
 		.then(data => {
-			message.reply(data.fact, { allowedMentions: { repliedUser: false } });
-		});
+			message.reply(new Discord.MessageAttachment(data, 'cat.png'));
+		})
+		.catch(e => console.error(e));
 };
 
 module.exports.config = {
-	name: 'catfact',
+	name: 'cat',
 	aliases: [],
-	description: 'Cat facts for you to know about!',
+	description: 'Cat images',
 };
