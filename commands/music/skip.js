@@ -26,21 +26,19 @@ module.exports.run = async (client, message, args) => {
 
 	const queue = client.queue.get(message.guild.id);
 
-	if(queue) {
-		queue.songs.shift();
+	if (queue) {
+		if(!queue.songs[0]) return message.reply('There isnt any queue!');
+		const skipped = queue.songs.shift();
 		play(queue.songs[0], message.guild.me.voice.channel);
-		await message.react('👍');
+		message.reply(`Skipped **${skipped.title}** requested by **${skipped.requestedBy.tag}**!`);
 	}
-
-
-	const reply = ({ type, text }) => {
-		const typee = type ? true : false;
-		return message.reply(text, {
+	else {
+		return message.reply('There isnt any queue!', {
 			allowedMentions: {
-				repliedUser: typee,
+				repliedUser: false,
 			},
 		});
-	};
+	}
 };
 
 module.exports.config = {

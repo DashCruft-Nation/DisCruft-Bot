@@ -38,9 +38,9 @@ module.exports.run = async (client, message, args) => {
 	}
 	else if (queue) {
 		message.reply('Do you want to keep the queue?');
-		message.channel.awaitMessages(user => user.id === message.author.id, { max: 1 }).then((msg) => {
+		message.channel.awaitMessages(user => user.author.id === message.author.id, { max: 1 }).then((msg) => {
 			if (msg.first().content.toLowerCase() === 'yes') {
-				message.member.voice.channel.leave();
+				msg.first().member.voice.channel.leave();
 				msg.first().reply('Stopped the music and left the channel!', {
 					allowedMentions: {
 						repliedUser: false,
@@ -49,7 +49,7 @@ module.exports.run = async (client, message, args) => {
 			}
 			else if (msg.first().content.toLowerCase() === 'no') {
 				client.queue.delete(message.guild.id);
-				message.guild.me.voice.channel.leave();
+				msg.first().guild.me.voice.channel.leave();
 				msg.first().reply('Stopped the music and deleted the queue!', {
 					allowedMentions: {
 						repliedUser: false,

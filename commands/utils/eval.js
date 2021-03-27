@@ -1,7 +1,17 @@
+/* eslint-disable no-unused-vars */
+const Discord = require('discord.js');
+/**
+ * JSDOC
+ * @param {Discord.Client} client
+ * @param {Discord.Message} message
+ * @param {String} args
+ * @returns
+ */
+
 module.exports.run = async (client, message, args) => {
 	const allowedDevs = ['361645744001908736', '515204641450098704', '633730629560958976', '571712139606360069'];
 	if (!allowedDevs.includes(message.author.id)) {
-		return message.channel.send('This is a dev only command.');
+		return message.reply('This is a dev only command.', { allowedMentions: { repliedUser: false } });
 	}
 	args = args.join(' ');
 	try {
@@ -23,6 +33,7 @@ module.exports.run = async (client, message, args) => {
 module.exports.config = {
 	name: 'eval',
 	aliases: [],
+	description: 'Eval command for the devs!',
 };
 
 function clean(text) {

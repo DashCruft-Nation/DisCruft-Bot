@@ -9,7 +9,7 @@ const { Client, Message } = require('discord.js');
 module.exports.run = async (client, message, args) => {
 	if (!message.guild.me.hasPermission('MANAGE_CHANNELS')) return message.reply('I do not have `MANAGE_CHANNELS` permission!', { allowedMentions: { repliedUser: false } });
 	if (!message.member.hasPermission('MANAGE_CHANNELS')) return message.reply('You do not have `MANAGE_CHANNELS` permission!', { allowedMentions: { repliedUser: false } });
-	const cd = parseInt(args[0]);
+	const cd = args[0];
 	const channel = message.mentions.channels.first() || message.guild.channels.cache.get(args[1]) || message.channel;
 	if (!channel) return message.reply('Something went wrong!', { allowedMentions: { repliedUser: false } });
 	if (!cd) {
@@ -39,7 +39,7 @@ module.exports.run = async (client, message, args) => {
 	else {
 		channel.setRateLimitPerUser(cd);
 		message.reply(
-			`Successfully set the Slowmode to ${cd} Seconds in this Channel!`,
+			`Successfully set the Slowmode to ${cd} Seconds in ${channel.id === message.channel.id ? 'this Channel' : `${channel}`}!`,
 			{ allowedMentions: { repliedUser: false } },
 		);
 	}
