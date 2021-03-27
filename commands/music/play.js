@@ -15,6 +15,15 @@ module.exports.run = async (client, message, args) => {
 	if (!message.guild.me.permissionsIn(message.member.voice.channel).has('CONNECT')) return message.reply(`I don't have \`CONNECT\` permission to connect to \`${message.member.voice.channel.name}\``, { allowedMentions: { repliedUser: false } });
 	if (!message.member.voice.channel.joinable || !message.member.voice.channel.speakable) return message.reply(`I cannot join/speak in ${message.member.voice.channel.toString()}`, { allowedMentions: { repliedUser: false } });
 	let joiningmsg = null;
+	if (client.queue.get(message.guild.id) && !args[0]) {
+		if (client.queue.get(message.guild.id).songs[0]) {
+			if (!message.guild.me.voice.channel) {
+				if (message.member.voice.channel.id !== client.queue.get(message.guild.id).voicechannel.id) client.queue.get(message.guild.id).voicechannel = message.member.voice.channel;
+				client.queue.get(message.guild.id).connection = await message.member.voice.channel.join();
+			}
+			return play(client.queue.get(message.guild.id).songs[0], client.queue.get(message.guild.id).voicechannel);
+		}
+	}
 	if (ytdl.validateURL(args[0])) {
 		const queue = client.queue.get(message.guild.id);
 		if (!message.guild.me.voice.channel) {
@@ -64,7 +73,7 @@ module.exports.run = async (client, message, args) => {
 					{ name: 'URL', value: `[${song.title}](${song.url})`, inline: true },
 					{ name: 'Type', value: 'Song', inline: true },
 					{ name: 'Video duration', value: `${song.duration}`, inline: true },
-					{ name: 'Song added by', value: `${message.author.username}`, inline: true },
+					{ name: 'Song added by', value: `${message.author.toString()}`, inline: true },
 					{ name: 'Song By', value: `${result.author.name}`, inline: true },
 					{ name: 'Album', value: `${album}`, inline: true },
 				)
@@ -164,8 +173,10 @@ async function play(song, voicechannel) {
 		await queue.voicechannel.join();
 	}
 	if (!song) {
-		voicechannel.client.queue.delete(voicechannel.guild.id);
-		return voicechannel.leave();
+		setTimeout(() => {
+			voicechannel.client.queue.delete(voicechannel.guild.id);
+			return voicechannel.leave();
+		}, 5000);
 	}
 	const stream = ytdl(song.url, { filter: 'audioonly' });
 	queue.connection.play(stream, { seek: 0, volume: 0.5 })
