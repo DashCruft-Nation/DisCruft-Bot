@@ -10,16 +10,16 @@ module.exports.run = async (client, message, args) => {
 	if (!message.guild.me.hasPermission('BAN_MEMBERS')) return message.reply('I don\'t have permission to ban members!', { allowedMentions: { repliedUser: false } });
 	if (!message.member.hasPermission('BAN_MEMBERS')) return message.reply('You don\'t have permission to ban members!', { allowedMentions: { repliedUser: false } });
 	if (!args[0]) return message.reply('Provide someone to ban!', { allowedMentions: { repliedUser: false } });
-	let check = false;
 	const target = message.mentions.members.first() || await message.guild.members.fetch(args[0]).catch(e => {
-		check = true;
 		return message.reply('Can\'t find specefied member! Provide a valid id', { allowedMentions: { repliedUser: false } });
 	});
-	if (check) return;
+
 	if(target.id === message.author.id) return message.reply('Why would you want to ban yourself?!', { allowedMentions: { repliedUser: false } });
 	if(target.id === client.user.id) return message.reply('Why would you want to ban me?!', { allowedMentions: { repliedUser: false } });
+
 	const reason = args.slice(1).join(' ');
 	if (!target.bannable) return message.reply('Can\'t ban specified member! Make sure I\'m above them in the heirarchy', { allowedMentions: { repliedUser: false } });
+
 	const confirmationEmbed = new MessageEmbed()
 		.setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
 		.setTitle(`Are you sure you want to ban ${target.user.tag} for reason - ${reason}?`);

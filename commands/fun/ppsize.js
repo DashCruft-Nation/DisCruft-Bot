@@ -39,4 +39,5 @@ module.exports.run = async (client, message, args) => {
 module.exports.config = {
 	name: 'ppsize',
 	aliases: ['pp'],
+	description: 'Shows the size of your pp :flushed:',
 };
