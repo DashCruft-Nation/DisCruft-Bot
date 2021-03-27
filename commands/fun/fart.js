@@ -5,6 +5,9 @@ const Discord = require('discord.js');
 const usedCommand = new Set();
 
 module.exports.run = async (client, message, args) => {
+	const fartArray = ["DARK_GREEN", "GREEN", "BROWN", "DARK_BROWN"]
+	const farty = Math.floor(Math.random() * fartArray.length)
+	const fartColor = fartArray[farty]
 	if (usedCommand.has(message.author.id)) {
 		return message.reply('bro wtf you can\'t fart more then 1 time each minute.\nshow some respect 🤢🤢');
 	}
@@ -52,7 +55,7 @@ module.exports.run = async (client, message, args) => {
 					msg.edit({
 						embed: {
 							description: '🤮💨',
-							color: 'RANDOM',
+							color: fartColor',
 							timestamp: new Date(),
 						},
 					});
@@ -70,7 +73,7 @@ module.exports.run = async (client, message, args) => {
 					msg.edit({
 						embed: {
 							description: '🤮💨💨💨',
-							color: 'RANDOM',
+							color: fartColor',
 							timestamp: new Date(),
 						},
 					});
@@ -79,7 +82,7 @@ module.exports.run = async (client, message, args) => {
 					msg.edit({
 						embed: {
 							description: '🤮💨💨💨💨',
-							color: 'RANDOM',
+							color: fartColor',
 							timestamp: new Date(),
 						},
 					});
@@ -88,7 +91,7 @@ module.exports.run = async (client, message, args) => {
 					msg.edit({
 						embed: {
 							description: '🤮💨💨💨💨💨',
-							color: 'RANDOM',
+							color: fartColor',
 							timestamp: new Date(),
 						},
 					});
@@ -97,7 +100,7 @@ module.exports.run = async (client, message, args) => {
 					msg.edit({
 						embed: {
 							description: '🤮💨💨💨💨💨💨',
-							color: 'RANDOM',
+							color: fartColor',
 							timestamp: new Date(),
 						},
 					});
@@ -106,7 +109,7 @@ module.exports.run = async (client, message, args) => {
 					msg.edit({
 						embed: {
 							description: 'the world have been exploded since ' + `${message.author.username} has been farted on all. 👼👼`,
-							color: 'RANDOM',
+							color: "WHITE"',
 							timestamp: new Date(),
 						},
 					});
