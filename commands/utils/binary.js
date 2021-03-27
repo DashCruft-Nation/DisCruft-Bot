@@ -5,7 +5,7 @@ const fetch = require('node-fetch').default;
  * JSDOC
  * @param {Discord.Client} bot
  * @param {Discord.Message} message
- * @param {String} args
+ * @param {String[]} args
  * @returns
  */
 

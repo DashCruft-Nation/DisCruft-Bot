@@ -5,21 +5,21 @@ const ytdl = require('ytdl-core');
  * JSDOC
  * @param {Discord.Client} client
  * @param {Discord.Message} message
- * @param {String} args
+ * @param {String[]} args
  * @returns
  */
 module.exports.run = async (client, message, args) => {
 	if (!message.member.voice.channel) {
 		return message.reply('You must be in a voice channel to use this command.', {
 			allowedMentions: {
-				repliedUser: true,
+				repliedUser: false,
 			},
 		});
 	}
 	if (message.member.voice.channel.id !== message.guild.me.voice.channel.id) {
 		return message.reply(`You must be in \`${message.guild.me.voice.channel.name}\` to use this command`, {
 			allowedMentions: {
-				repliedUser: true,
+				repliedUser: false,
 			},
 		});
 	}
@@ -27,10 +27,10 @@ module.exports.run = async (client, message, args) => {
 	const queue = client.queue.get(message.guild.id);
 
 	if (queue) {
-		if(!queue.songs[0]) return message.reply('There isnt any queue!');
+		if(!queue.songs[0]) return message.reply('There isnt any queue!', { allowedMentions: { repliedUser: false } });
 		const skipped = queue.songs.shift();
 		play(queue.songs[0], message.guild.me.voice.channel);
-		message.reply(`Skipped **${skipped.title}** requested by **${skipped.requestedBy.tag}**!`);
+		message.reply(`Skipped **\`${skipped.title}\`** requested by **${skipped.requestedBy.tag}**!`, { allowedMentions: { repliedUser: false } });
 	}
 	else {
 		return message.reply('There isnt any queue!', {

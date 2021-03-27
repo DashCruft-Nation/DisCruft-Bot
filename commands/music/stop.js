@@ -4,7 +4,7 @@ const Discord = require('discord.js');
  * JSDOC
  * @param {Discord.Client} client
  * @param {Discord.Message} message
- * @param {String} args
+ * @param {String[]} args
  * @returns
  */
 module.exports.run = async (client, message, args) => {
@@ -37,7 +37,7 @@ module.exports.run = async (client, message, args) => {
 		message.reply('A queue was not found! But bot was in voice channel, I have left the voice channel successfully!', { allowedMentions: { repliedUser: false } });
 	}
 	else if (queue) {
-		message.reply('Do you want to keep the queue?');
+		message.reply('Do you want to keep the queue?', { allowedMentions: { repliedUser: false } });
 		message.channel.awaitMessages(user => user.author.id === message.author.id, { max: 1 }).then((msg) => {
 			if (msg.first().content.toLowerCase() === 'yes') {
 				msg.first().member.voice.channel.leave();

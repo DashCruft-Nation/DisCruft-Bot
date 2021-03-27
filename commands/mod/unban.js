@@ -4,7 +4,7 @@ const Discord = require('discord.js');
  * JSDOC
  * @param {Discord.Client} client
  * @param {Discord.Message} message
- * @param {String} args
+ * @param {String[]} args
  */
 module.exports.run = async (client, message, args) => {
 	if (!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send('You are not allowed to unban members!');

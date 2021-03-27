@@ -4,7 +4,7 @@ const Discord = require('discord.js');
  * JSDOC
  * @param {Discord.Client} client
  * @param {Discord.Message} message
- * @param {String} args
+ * @param {String[]} args
  * @returns
  */
 module.exports.run = async (client, message, args) => {
