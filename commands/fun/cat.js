@@ -9,18 +9,7 @@ const fetch = require('node-fetch').default;
  * @param {String[]} args
  */
 module.exports.run = async (client, message, args) => {
-	// Snowflake API for the cat images
-	fetch('https://api.snowflakedev.xyz/api/cat', {
-		headers: {
-			// Change this API key pls
-			'Authorization': '',
-		},
-	})
-		.then(res => res.buffer())
-		.then(data => {
-			message.reply({ files: [new Discord.MessageAttachment(data, 'cat.png')], allowedMentions: { repliedUser: false } });
-		})
-		.catch(e => console.error(e));
+    message.reply({ files: [new Discord.MessageAttachment('https://source.unsplash.com/collection/139386/200x200/?sig=')], allowedMentions: { repliedUser: false } });
 };
 
 module.exports.config = {
