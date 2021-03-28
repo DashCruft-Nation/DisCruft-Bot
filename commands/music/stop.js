@@ -37,31 +37,21 @@ module.exports.run = async (client, message, args) => {
 		message.reply('A queue was not found! But bot was in voice channel, I have left the voice channel successfully!', { allowedMentions: { repliedUser: false } });
 	}
 	else if (queue) {
-		message.reply('Do you want to keep the queue?', { allowedMentions: { repliedUser: false } });
-		message.channel.awaitMessages(user => user.author.id === message.author.id, { max: 1 }).then((msg) => {
-			if (msg.first().content.toLowerCase() === 'yes') {
-				msg.first().member.voice.channel.leave();
-				msg.first().reply('Stopped the music and left the channel!', {
-					allowedMentions: {
-						repliedUser: false,
-					},
-				});
-			}
-			else if (msg.first().content.toLowerCase() === 'no') {
-				client.queue.delete(message.guild.id);
-				msg.first().guild.me.voice.channel.leave();
-				msg.first().reply('Stopped the music and deleted the queue!', {
-					allowedMentions: {
-						repliedUser: false,
-					},
-				});
+		const mes = await message.reply('Do you want to keep the queue?', { allowedMentions: { repliedUser: false } });
+		await mes.react('✔️');
+		await mes.react('✖️');
+		const filter = (reaction, user) => {
+			return (reaction.emoji.name === '✔️' || reaction.emoji.name === '✖️') && user.id === message.author.id;
+		};
+		mes.createReactionCollector(filter, { max: 1 }).on('end', collceted => {
+			if (collceted.first().emoji.name === '✔️') {
+				message.member.voice.channel.leave();
+				message.reply('Stopped the music and saved the queue!', { allowedMentions: { repliedUser: false } });
 			}
 			else {
-				msg.first().reply('Please provide a valid option! Either `yes` or `no`(in case-sensitive!)', {
-					allowedMentions: {
-						repliedUser: false,
-					},
-				});
+				client.queue.delete(message.guild.id);
+				message.member.voice.channel.leave();
+				message.reply('Stopped the music and deleted the queue!', { allowedMentions: { repliedUser: false } });
 			}
 		});
 	}

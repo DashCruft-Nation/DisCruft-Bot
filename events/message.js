@@ -23,7 +23,7 @@ module.exports = async (client, message) => {
 	let cmd = messageArray[0];
 	let args = messageArray.slice(1);
 
-	const prefix = '#';
+	const prefix = '?';
 
 	const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`);
 	if (!prefixRegex.test(messageArray)) return;
