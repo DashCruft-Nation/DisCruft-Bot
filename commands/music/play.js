@@ -87,7 +87,7 @@ module.exports.run = async (client, message, args) => {
 	else {
 		const queue = client.queue.get(message.guild.id);
 		const query = args.join(' ');
-		if (!query) return message.reply('Please provide a query!', { allowedMentions: { repliedUser: false } });
+		if (!query) return message.reply('Please provide a song!', { allowedMentions: { repliedUser: false } });
 		let result = await yt.search(query);
 		if (!result.videos[0]) return message.reply('Couldn\'t find any results!', { allowedMentions: { repliedUser: false } });
 		result = result.videos[0];
