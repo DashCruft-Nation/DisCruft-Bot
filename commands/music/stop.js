@@ -46,12 +46,12 @@ module.exports.run = async (client, message, args) => {
 		mes.createReactionCollector(filter, { max: 1 }).on('end', collceted => {
 			if (collceted.first().emoji.name === '✔️') {
 				message.member.voice.channel.leave();
-				message.channel.send('Stopped the music and saved the queue!');
+				message.reply('Stopped the music and saved the queue!', { allowedMentions: { repliedUser: false } });
 			}
 			else {
 				client.queue.delete(message.guild.id);
 				message.member.voice.channel.leave();
-				message.channel.send('Stopped the music and deleted the queue!');
+				message.reply('Stopped the music and deleted the queue!', { allowedMentions: { repliedUser: false } });
 			}
 		});
 	}
