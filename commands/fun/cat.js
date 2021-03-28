@@ -1,4 +1,3 @@
-/* eslint-disable comma-dangle */
 /* eslint-disable no-unused-vars */
 const Discord = require('discord.js');
 const { Client, Message } = require('discord.js');
@@ -14,12 +13,12 @@ module.exports.run = async (client, message, args) => {
 	fetch('https://api.snowflakedev.xyz/api/cat', {
 		headers: {
 			// Change this API key pls
-			'Authorization': ''
-		}
+			'Authorization': '',
+		},
 	})
 		.then(res => res.buffer())
 		.then(data => {
-			message.reply(new Discord.MessageAttachment(data, 'cat.png'));
+			message.reply({ files: [new Discord.MessageAttachment(data, 'cat.png')], allowedMentions: { repliedUser: false } });
 		})
 		.catch(e => console.error(e));
 };

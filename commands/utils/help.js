@@ -6,7 +6,7 @@ const fs = require('fs');
  *
  * @param {Discord.Client} client
  * @param {Discord.Message} message
- * @param {String} args
+ * @param {String[]} args
  */
 
 module.exports.run = async (client, message, args) => {

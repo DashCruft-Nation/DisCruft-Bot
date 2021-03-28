@@ -20,15 +20,16 @@
     "@discordjs/opus": "^0.5.0",
     "canvas": "^2.7.0",
     "discord.js": "github:monbrey/discord.js#inline-replies",
-    "distube": "^2.8.12",
     "dotenv": "^8.2.0",
     "eslint": "^7.22.0",
     "ffmpeg-static": "^4.2.8",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
-    "reconlx": "^1.1.2",
     "mongoose": "^5.12.2",
     "node-fetch": "^2.6.1",
-    "pretty-ms": "^7.0.1"
+    "pretty-ms": "^7.0.1",
+    "reconlx": "^1.1.2",
+    "yt-search": "^2.7.5",
+    "ytdl-core": "^4.5.0"
   }
 }
