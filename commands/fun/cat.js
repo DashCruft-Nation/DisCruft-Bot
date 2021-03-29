@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
-const Discord = require('discord.js');
-const { Client, Message } = require('discord.js');
+const { Client, Message, MessageAttachment } = require('discord.js');
 const fetch = require('node-fetch').default;
 /**
  * JSDOC
@@ -9,16 +8,13 @@ const fetch = require('node-fetch').default;
  * @param {String[]} args
  */
 module.exports.run = async (client, message, args) => {
-	// Snowflake API for the cat images
-	fetch('https://api.snowflakedev.xyz/api/cat', {
-		headers: {
-			// Change this API key pls
-			'Authorization': '',
-		},
-	})
+	const msg = await message.reply('<a:loading:705952835476521073>', { allowedMentions: { repliedUser: false } });
+	fetch('https://source.unsplash.com/collection/139386/200x200/?sig=')
 		.then(res => res.buffer())
 		.then(data => {
-			message.reply({ files: [new Discord.MessageAttachment(data, 'cat.png')], allowedMentions: { repliedUser: false } });
+			msg.delete();
+			const img = new MessageAttachment(data, 'cat.png');
+			message.reply({ files: [img], allowedMentions: { repliedUser: false } });
 		})
 		.catch(e => console.error(e));
 };
