@@ -5,6 +5,9 @@ const Guilds = new Schema({
 	prefix: { type: String, default: '?' },
 	locked: { type: Boolean, default: false },
 	lockedChannels: { type: Array },
+	welcome: { type: Boolean, default: false },
+	welcomeChannel: { type: String, default: null },
+	welcomemsg: { type: String, default: null },
 });
 
 module.exports = model('Guilds', Guilds);

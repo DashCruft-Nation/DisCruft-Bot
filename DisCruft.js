@@ -1,12 +1,10 @@
 const {
-	Collection,
 	Client,
+	Collection,
 } = require('discord.js');
-
 module.exports = class DisCruft extends Client {
 	constructor(options) {
 		super(options);
-
 		this.commands = new Collection();
 		this.aliases = new Collection();
 		this.snipes = new Map();
