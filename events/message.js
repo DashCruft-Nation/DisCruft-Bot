@@ -29,7 +29,7 @@ module.exports = async (client, message) => {
 	if (!prefixRegex.test(messageArray)) return;
 	const [, matchedPrefix] = message.content.match(prefixRegex);
 
-	if(cmd.slice(matchedPrefix.length) != prefix && matchedPrefix.includes(client.user.id)) {
+	if (cmd.slice(matchedPrefix.length) != prefix && matchedPrefix.includes(client.user.id)) {
 		cmd = args[0];
 		args = args.slice(1);
 		commandfile = client.commands.get(cmd.toLowerCase()) || client.commands.get(client.aliases.get(cmd.toLowerCase()));
@@ -38,11 +38,11 @@ module.exports = async (client, message) => {
 		commandfile = client.commands.get(cmd.slice(matchedPrefix.length).toString().toLowerCase()) || client.commands.get(client.aliases.get(cmd.slice(matchedPrefix.length).toString().toLowerCase()));
 	}
 	if (commandfile) {
-		try{
+		try {
 			await commandfile.run(client, message, args);
 		}
-		catch(err) {
-			message.reply(`An error occured!\nError: ${err}`, {
+		catch (err) {
+			message.reply(`An error occured!\nError: ${require('util').inspect(err, { depth: 0 })}`, {
 				allowedMentions: {
 					repliedUser: false,
 				},
