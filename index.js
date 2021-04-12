@@ -12,6 +12,8 @@ const client = new DisCruft({
 	},
 	disableMentions: 'everyone',
 });
+const welcome = require("./welcome");
+welcome(client);
 client.distube = new DisTube(client, {
 	leaveOnEmpty: false,
 	searchSongs: false,
