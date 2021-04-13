@@ -80,6 +80,7 @@ module.exports = function (client) {
       const ch = g.channels.cache.get('825224040641724416')
 try{ 
    ch.send(welcomeembed)
+   ch.send(attachment)
 }catch(e){
  console.log(e)
 }
