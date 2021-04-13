@@ -17,10 +17,9 @@ client.distube = new DisTube(client, {
 	emitNewSongOnly: true,
 	leaveOnFinish: false,
 });
-=======
+
 client.queue = new Map();
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MongoDB, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
-const welcome = require("./welcome");
-welcome(client);
+
 client.setup();
