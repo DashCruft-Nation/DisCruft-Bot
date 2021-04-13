@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 const { Client, Message } = require('discord.js');
+const _os = require('os-utils');
 /**
  * JSDOC
  * @param {Client} client
@@ -7,4 +8,21 @@ const { Client, Message } = require('discord.js');
 module.exports = client => {
 	console.log(`${client.user.tag} is online!`);
 	client.user.setActivity('?help | made by amazing open-source contributors', { type: 'WATCHING' });
+	setInterval(() => {
+		try {
+			client.cpuusage = '';
+			_os.cpuUsage(c => {
+				if ((c * 100).toString().split('.')[1]) {
+					client.cpuusage = `${(c * 100).toString().split('.')[0] + '.' + (c * 100).toString().split('.')[1].split('')[0] + (c * 100).toString().split('.')[1].split('')[1]}%`;
+				}
+				else {
+					client.cpuusage = `${(c * 100).toString().split('.')[0]}%`;
+				}
+
+			});
+		}
+		catch (er) {
+			console.error(er);
+		}
+	}, 1000 * 5);
 };

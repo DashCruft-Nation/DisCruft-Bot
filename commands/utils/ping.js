@@ -1,5 +1,8 @@
 /* eslint-disable no-unused-vars */
-const { Client, Message } = require('discord.js');
+const {
+	Client,
+	Message,
+} = require('discord.js');
 /**
  * JSDOC
  * @param {Client} client
@@ -15,7 +18,9 @@ module.exports.run = async (client, message, args) => {
 			title: 'Pong 🏓',
 			description: `latency: \`${latency}ms\`\nAPI latency: \`${apilatency}ms\``,
 		},
-		allowedMentions: { repliedUser: false },
+		allowedMentions: {
+			repliedUser: false,
+		},
 	});
 
 };

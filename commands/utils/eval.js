@@ -1,8 +1,17 @@
+/* eslint-disable no-unused-vars */
+const Discord = require('discord.js');
+/**
+ * JSDOC
+ * @param {Discord.Client} client
+ * @param {Discord.Message} message
+ * @param {String[]} args
+ * @returns
+ */
+
 module.exports.run = async (client, message, args) => {
-	const { clean } = require('../../functions/functions');
-	const allowedDevs = ['361645744001908736', '515204641450098704', '633730629560958976'];
+	const allowedDevs = ['361645744001908736', '515204641450098704', '633730629560958976', '571712139606360069'];
 	if (!allowedDevs.includes(message.author.id)) {
-		return message.channel.send('This is a dev only command.');
+		return message.reply('This is a dev only command.', { allowedMentions: { repliedUser: false } });
 	}
 	args = args.join(' ');
 	try {
@@ -13,7 +22,7 @@ module.exports.run = async (client, message, args) => {
 		}
 		else {evaled = eval(args);}
 		if (typeof evaled !== 'string') {
-			evaled = require('util').inspect(evaled);
+			evaled = require('util').inspect(evaled, { depth: 0 });
 		}
 		message.channel.send(`\`\`\`xl\n${clean(evaled)}\n\`\`\``);
 	}
@@ -24,4 +33,12 @@ module.exports.run = async (client, message, args) => {
 module.exports.config = {
 	name: 'eval',
 	aliases: [],
+	description: 'Eval command for the devs!',
 };
+
+function clean(text) {
+	if (typeof (text) === 'string') {
+		return text.replace(/`/g, '`' + String.fromCharCode(8203)).replace(/@/g, '@' + String.fromCharCode(8203));
+	}
+	else {return text;}
+}

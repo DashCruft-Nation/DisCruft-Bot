@@ -2,7 +2,6 @@ const {
 	Intents,
 } = require('discord.js');
 const DisCruft = require('./DisCruft');
-const DisTube = require('distube');
 
 require('dotenv').config();
 const client = new DisCruft({
@@ -12,16 +11,16 @@ const client = new DisCruft({
 	},
 	disableMentions: 'everyone',
 });
-const welcome = require("./welcome");
-welcome(client);
 client.distube = new DisTube(client, {
 	leaveOnEmpty: false,
 	searchSongs: false,
 	emitNewSongOnly: true,
 	leaveOnFinish: false,
 });
-
+=======
+client.queue = new Map();
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
-
+mongoose.connect(process.env.MongoDB, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
+const welcome = require("./welcome");
+welcome(client);
 client.setup();
