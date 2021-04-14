@@ -7,7 +7,19 @@ const _os = require('os-utils');
  */
 module.exports = client => {
 	console.log(`${client.user.tag} is online!`);
-	client.user.setActivity('?help | made by amazing open-source contributors', { type: 'WATCHING' });
+  const arrayOfStatus = [
+    'BEING FUNNY',
+    '?help | MADE BY POG OPEN-SOURCE CONTRIBUTORS'
+];
+
+let index = 0;
+setInterval(() => {
+  if(index === arrayOfStatus.length) index = 0;
+  const status = arrayOfStatus[index];
+  console.log(status)
+  client.user.setActivity(status, { type: 5 }).catch(console.error)
+  index++;
+}, 15000);
 	setInterval(() => {
 		try {
 			client.cpuusage = '';
