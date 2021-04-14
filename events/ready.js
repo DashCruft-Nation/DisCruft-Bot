@@ -16,10 +16,10 @@ let index = 0;
 setInterval(() => {
   if(index === arrayOfStatus.length) index = 0;
   const status = arrayOfStatus[index];
-  console.log(status)
+ 
   client.user.setActivity(status, { type: 5 }).catch(console.error)
   index++;
-}, 15000);
+}, 10000);
 	setInterval(() => {
 		try {
 			client.cpuusage = '';
