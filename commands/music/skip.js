@@ -10,13 +10,15 @@ const ytdl = require('ytdl-core');
  */
 module.exports.run = async (client, message, args) => {
 	if (!message.member.voice.channel) {
-		return message.reply('You must be in a voice channel to use this command.', {
-			allowedMentions: {
-				repliedUser: false,
-			},
-		});
+		if (!message.member.voice.channelID) {
+			return message.reply('You must be in a voice channel to use this command.', {
+				allowedMentions: {
+					repliedUser: false,
+				},
+			});
+		}
 	}
-	if (message.member.voice.channel.id !== message.guild.me.voice.channel.id) {
+	if (message.member.voice.channelID !== message.guild.me.voice.channelID) {
 		return message.reply(`You must be in \`${message.guild.me.voice.channel.name}\` to use this command`, {
 			allowedMentions: {
 				repliedUser: false,
@@ -27,9 +29,9 @@ module.exports.run = async (client, message, args) => {
 	const queue = client.queue.get(message.guild.id);
 
 	if (queue) {
-		if(!queue.songs[0]) return message.reply('There isnt any queue!', { allowedMentions: { repliedUser: false } });
+		if (!queue.songs[0]) return message.reply('There isnt any queue!', { allowedMentions: { repliedUser: false } });
 		const skipped = queue.songs.shift();
-		play(queue.songs[0], message.guild.me.voice.channel);
+		play(queue.songs[0], queue.voicechannel);
 		message.reply(`Skipped **\`${skipped.title}\`** requested by **${skipped.requestedBy.tag}**!`, { allowedMentions: { repliedUser: false } });
 	}
 	else {
@@ -52,12 +54,12 @@ async function play(song, voicechannel) {
 	if (voicechannel.members.size === 0) {
 		queue.textchannel.send('Stopped the music due to empty voice channel! The queue is not deleted');
 	}
-	if (!voicechannel.guild.me.voice.channel) {
-		await queue.voicechannel.join();
-	}
 	if (!song) {
 		voicechannel.client.queue.delete(voicechannel.guild.id);
-		return voicechannel.leave();
+		return queue.connection.disconnect();
+	}
+	if (!voicechannel.guild.me.voice.channelID) {
+		await queue.voicechannel.join();
 	}
 	const stream = ytdl(song.url, { filter: 'audioonly' });
 	queue.connection.play(stream, { seek: 0, volume: 0.5 })

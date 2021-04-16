@@ -7,14 +7,17 @@ module.exports = class DisCruft extends Client {
 		super(options);
 		this.commands = new Collection();
 		this.aliases = new Collection();
+		this.slashcommands = new Collection();
 		this.snipes = new Map();
 		this.config = require('./config.json');
-		this.functions = require('./functions/functions');
 	}
 
 	setup() {
 		require('./utils/loadCommands')(this);
-		require('./utils/loadEvents')(this);
+		require('./utils/loadClientEvents')(this);
+		require('./utils/loadProcessEvents')(this);
+		require('./utils/loadWsEvents')(this);
+		require('./utils/loadSlashCommands')(this);
 
 		this.login(process.env.TOKEN);
 	}

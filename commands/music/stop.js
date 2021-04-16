@@ -8,7 +8,7 @@ const Discord = require('discord.js');
  * @returns
  */
 module.exports.run = async (client, message, args) => {
-	if (!message.guild.me.voice.channel) {
+	if (!message.guild.me.voice.channelID) {
 		return message.reply('There isn\'t any music being played right now!', {
 			allowedMentions: {
 				repliedUser: false,
@@ -16,13 +16,15 @@ module.exports.run = async (client, message, args) => {
 		});
 	}
 	if (!message.member.voice.channel) {
-		return message.reply('You must be in a voice channel to use this command.', {
-			allowedMentions: {
-				repliedUser: false,
-			},
-		});
+		if (!message.member.voice.channelID) {
+			return message.reply('You must be in a voice channel to use this command.', {
+				allowedMentions: {
+					repliedUser: false,
+				},
+			});
+		}
 	}
-	if (message.member.voice.channel.id !== message.guild.me.voice.channel.id) {
+	if (message.member.voice.channelID !== message.guild.me.voice.channelID) {
 		return message.reply(`You must be in \`${message.guild.me.voice.channel.name}\` to use this command`, {
 			allowedMentions: {
 				repliedUser: false,
@@ -33,7 +35,8 @@ module.exports.run = async (client, message, args) => {
 	const queue = client.queue.get(message.guild.id);
 
 	if (!queue) {
-		message.member.voice.channel.leave();
+		if(!message.guild.me.voice.channel) return message.reply('Bot was not in a channel!', { allowedMentions: { repliedUser: false } });
+		message.guild.me.voice.connection.disconnect();
 		message.reply('A queue was not found! But bot was in voice channel, I have left the voice channel successfully!', { allowedMentions: { repliedUser: false } });
 	}
 	else if (queue) {
@@ -45,12 +48,12 @@ module.exports.run = async (client, message, args) => {
 		};
 		mes.createReactionCollector(filter, { max: 1 }).on('end', collceted => {
 			if (collceted.first().emoji.name === '✔️') {
-				message.member.voice.channel.leave();
+				queue.connection.disconnect();
 				message.reply('Stopped the music and saved the queue!', { allowedMentions: { repliedUser: false } });
 			}
 			else {
 				client.queue.delete(message.guild.id);
-				message.member.voice.channel.leave();
+				queue.connection.disconnect();
 				message.reply('Stopped the music and deleted the queue!', { allowedMentions: { repliedUser: false } });
 			}
 		});

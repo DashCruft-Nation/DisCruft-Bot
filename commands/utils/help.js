@@ -9,7 +9,7 @@ const fs = require('fs');
  * @param {String[]} args
  */
 
-module.exports.run = async (client, message, args) => {
+module.exports.run = (client, message, args) => {
 	if (!args[0]) {
 		const embed = new Discord.MessageEmbed()
 			.setTitle('DisCruft\'s Help!')
@@ -36,15 +36,14 @@ module.exports.run = async (client, message, args) => {
 		message.reply({ embed: embed, allowedMentions: { repliedUser: false } });
 	}
 	else if (client.commands.get(args[0]) || client.aliases.get(args[0])) {
-		const cmd = client.commands.get(args[0]);
+		const cmd = client.commands.get(args[0]) || client.commands.get(client.aliases.get(args[0]));
 		if(!cmd) return message.reply('That\'s not a valid command!', { allowedMentions: { repliedUser: false } });
 		const embed = new Discord.MessageEmbed()
 			.setTitle(`${cmd.config.name.slice(0, 1).toUpperCase() + cmd.config.name.slice(1).toLowerCase()} Command!`)
 			.setDescription(`${cmd.config.description}`)
 			.setFooter(message.author.tag, message.author.displayAvatarURL())
 			.setColor('RANDOM')
-			.addField('Info', 'More info about the command soon!'); // Just something so it isnt empty
-		/* We can add fields according to the info we add in module.exports.config :ye: */
+			.addField('Aliases', cmd.config.aliases.join(', ') || 'None');
 		message.reply({ embed: embed, allowedMentions: { repliedUser: false } });
 	}
 };
