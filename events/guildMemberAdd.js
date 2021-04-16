@@ -1,9 +1,10 @@
 /* eslint-disable no-unused-vars */
+const config = require("../config");
 const schema = require('../database/models/Guilds');
 const Discord = require('discord.js');
 const Canvas = require("canvas");
 const { registerFont, createCanvas } = require('canvas')
-
+require("dotenv").config()
 registerFont('./arialblack.ttf', { family: 'arial' })
 
 /**
@@ -55,17 +56,17 @@ module.exports = async (client, member) => {
   ctx.font = 'bold 60px "bi"';
   ctx.fillStyle = '#000000';
   ctx.fillText(textString4, 700, canvas.height / 2 - 150);
- 
+
   ctx.beginPath();
   ctx.arc(315, canvas.height / 2, 250, 0, Math.PI * 2, true);//position of img
   ctx.closePath();
   ctx.clip();
- 
+
   const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: 'jpg' }));
 
   ctx.drawImage(avatar, 65, canvas.height / 2 - 250, 500, 500);
 
-  
+
 
   let data = await schema.findOne({
     id: member.guild.id,
@@ -80,19 +81,26 @@ module.exports = async (client, member) => {
     }).save();
   }
   if (data.welcome === true && data.welcomeChannel) {
-  }try{
+  } try {
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.png');
+    const channel = member.guild.channels.cache.find(ch => ch.id === config.WELCOME_ID);
     const welcomeembed = new Discord.MessageEmbed()
-    .setTitle(`Welcome to ${member.guild.name}`)
-    .setColor("RANDOM")
-    .setTimestamp()
-    .setFooter("Welcome", member.guild.iconURL({ dynamic: true }))
-    .setDescription(`Hi <@${member.id}>!, read and accept the rules!`)
-    const g = client.guilds.cache.get("644764850706448384")
-    const ch = g.channels.cache.get('825224040641724416')
-   ch.send(welcomeembed)
-   ch.send(attachment)
-}catch(e){
- console.log(e)
-}
+
+      .setTitle(`Welcome to ${member.guild.name}!`)
+      .setColor("RANDOM")
+      .setTimestamp()
+      .setFooter("Welcome", member.guild.iconURL({ dynamic: true }))
+      .setDescription(`Hi <@${member.id}>!, read and accept the rules!`)
+      .setImage("attachment://welcome-image.png")
+      .attachFiles(attachment);
+    try {
+      channel.send(welcomeembed)
+      let roles = member.guild.roles.cache.find(roles => roles.id === config.ROLES_ID);
+      member.roles.add(roles);
+    } catch (e) {
+      console.log(e)
+    }
+  } catch (e) {
+    console.log(e)
+  }
 };
