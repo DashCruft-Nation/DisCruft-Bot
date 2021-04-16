@@ -47,7 +47,7 @@ module.exports = async (client, member) => {
       //if the text is too big then smaller the text
       if (textString3.length >= 14) {
         ctx.font = 'bold 100px "Roboto"';
-        ctx.fillStyle = '#f2f2f2';
+        ctx.fillStyle = '#000000';
         ctx.fillText(textString3, 720, canvas.height / 2 + 20);
       }
       //else dont do it
