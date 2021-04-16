@@ -3,9 +3,9 @@ const schema = require('../database/models/Guilds');
 const Discord = require('discord.js');
 const Canvas = require("canvas");
 const { registerFont, createCanvas } = require('canvas')
-registerFont('./TigeriousItalic-9YyJn.otf', { family: 'Roboto' })
+registerFont('./Debrosee-ALPnL.ttf', { family: 'Roboto' })
 registerFont('./Debrosee-ALPnL.ttf', { family: 'deb' })
-registerFont('./BieksaFreeTrial-RpdWE.otf', { family: 'bi' })
+registerFont('./Debrosee-ALPnL.ttf', { family: 'bi' })
 
 /**
  *
