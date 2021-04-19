@@ -15,7 +15,6 @@ module.exports = class DisCruft extends Client {
 	setup() {
 		require('./utils/loadCommands')(this);
 		require('./utils/loadClientEvents')(this);
-		require('./utils/loadProcessEvents')(this);
 		require('./utils/loadWsEvents')(this);
 		require('./utils/loadSlashCommands')(this);
 
