@@ -10,20 +10,7 @@ Canvas.registerFont('./Debrosee-ALPnL.ttf', { family: 'deb' });
  * @returns undefined
  */
 module.exports = async (client, member) => {
-	let data = await schema.findOne({
-		id: member.guild.id,
-	});
-	if (!data) {
-		data = await new schema({
-			id: member.guild.id,
-			prefix: '?',
-			locked: false,
-			lockedChannels: [],
-			welcome: false,
-		}).save();
-	}
-	if (data.welcome === true && data.welcomeChannel) {
-		const c = 'https://i.imgur.com/RhAzf2d.png';
+const c = 'https://i.imgur.com/RhAzf2d.png';
 
 		if (!c) return;
 		if (!member.guild) return;
@@ -85,12 +72,26 @@ module.exports = async (client, member) => {
 			.setDescription(data.welcomemsg)
 			.setFooter('Welcome', member.guild.iconURL({ dynamic: true }))
 			.attachFiles([attachment]);
-		const ch = member.guild.channels.cache.get(data.welcomeChannel);
+		const ch = member.guild.channels.cache.get("825224040641724416");
 		try {
 			ch.send(welcomeembed);
 		}
 		catch (e) {
 			console.log(e);
 		}
+	let data = await schema.findOne({
+		id: member.guild.id,
+	});
+	if (!data) {
+		data = await new schema({
+			id: member.guild.id,
+			prefix: '?',
+			locked: false,
+			lockedChannels: [],
+			welcome: false,
+		}).save();
+	}
+	if (data.welcome === true && data.welcomeChannel) {
+		welcome 
 	}
 };
