@@ -13,7 +13,7 @@ module.exports = async (client, message) => {
 	const mentionembed = new MessageEmbed()
 		.setTitle('DisCruft bot info!')
 		.setDescription(`My prefix for ${message.guild.name} is \`?\`! Use \`?help\` for info about my commands! You can also use mention as my prefix now!`)
-		.setColor(require('../config.json').mainColor)
+		.setColor(client.config.mainColor)
 		.setThumbnail(client.user.displayAvatarURL())
 		.setFooter(client.user.tag, client.user.displayAvatarURL())
 		.setAuthor(message.author.tag, message.author.displayAvatarURL());

@@ -7,25 +7,25 @@ const _os = require('os-utils');
  */
 module.exports = client => {
 	console.log(`${client.user.tag} is online!`);
-  const arrayOfType = [
-    5,
-    'WATCHING'
-  ];
-  const arrayOfStatus = [
-    'BEING FUNNY',
-    '?help | MADE BY POG OPEN-SOURCE CONTRIBUTORS'
-];
+	const arrayOfType = [
+		'PLAYING',
+		'WATCHING',
+	];
+	const arrayOfStatus = [
+		'with everyone on discord',
+		'?help | Made by open-sorce contributors with ❤️',
+	];
 
-let index = 0;
-setInterval(() => {
-  if(index === arrayOfType.length) index = 0;
-  if(index === arrayOfStatus.length) index = 0;
-  const status = arrayOfStatus[index];
-  const type = arrayOfType[index];
- 
-  client.user.setActivity(status, { type: type }).catch(console.error)
-  index++;
-}, 10000);
+	let index = 0;
+	setInterval(() => {
+		if(index === arrayOfType.length) index = 0;
+		if(index === arrayOfStatus.length) index = 0;
+		const status = arrayOfStatus[index];
+		const type = arrayOfType[index];
+
+		client.user.setActivity(status, { type: type }).catch(console.error);
+		index++;
+	}, 10000);
 	setInterval(() => {
 		try {
 			client.cpuusage = '';

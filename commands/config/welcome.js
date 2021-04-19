@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-const Discord = require('discord.js');
 const schema = require('../../database/models/Guilds');
 /**
  * JSDOC
@@ -58,6 +57,6 @@ module.exports.run = async (client, message, args) => {
 };
 module.exports.config = {
 	name: 'welcome',
-	desc: 'Welcome message configuration command!',
+	description: 'Welcome message configuration command!',
 	aliases: ['wlcm'],
 };
