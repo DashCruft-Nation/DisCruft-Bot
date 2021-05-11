@@ -24,12 +24,13 @@ async function evaluate(args) {
 	if (args.includes('fs')) return;
 	if (args.includes('this')) return;
 	if (args.includes('console')) return;
+	if (args.includes('eval')) return;
 	if (args.split('for')[1]) {
 		let result = true;
 		args.split('for').forEach(arg => {
-			if(arg.startsWith('Each')) result = false;
+			if (arg.startsWith('Each')) result = false;
 		});
-		if(result == true) return;
+		if (result == true) return;
 	}
 	if (args.includes('require')) return;
 	try {
