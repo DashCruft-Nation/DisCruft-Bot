@@ -16,7 +16,7 @@ module.exports.run = (client, message, args) => {
 			.setDescription(`My prefix is \`?\` in ${message.guild.name}! We are getting more commands soon!`)
 			.setColor('RANDOM')
 			.setFooter(message.author.tag, message.author.displayAvatarURL());
-		fs.readdir('commands', (err, cmdfolders) => {
+		fs.readdir('src/commands', (err, cmdfolders) => {
 			if (err) console.log(err);
 			for (let i = 0; i < cmdfolders.length; i++) {
 				embed.addField(`${require(`../${cmdfolders[i]}/config`).title}`, `\`?help ${cmdfolders[i]}\``);
@@ -24,8 +24,8 @@ module.exports.run = (client, message, args) => {
 			message.reply({ embed: embed, allowedMentions: { repliedUser: false } });
 		});
 	}
-	else if (fs.readdirSync('commands').includes(args[0])) {
-		let cmds = fs.readdirSync(`commands/${args[0]}`);
+	else if (fs.readdirSync('src/commands').includes(args[0])) {
+		let cmds = fs.readdirSync(`src/commands/${args[0]}`);
 		cmds = cmds.filter(z => z.split('.')[1] === 'js');
 		const embed = new Discord.MessageEmbed()
 			.setTitle(`${args[0].slice(0, 1).toUpperCase() + args[0].slice(1).toLowerCase()} Commands!`)

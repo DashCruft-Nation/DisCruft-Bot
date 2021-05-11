@@ -69,7 +69,7 @@ module.exports.config = {
 				{
 					name: 'command',
 					description: 'The command you want info about',
-					required: true,
+					required: false,
 					type: 3,
 				},
 			],

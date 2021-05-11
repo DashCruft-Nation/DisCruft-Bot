@@ -8,6 +8,7 @@ const fs = require('fs');
  * @param {String[]} args
  */
 module.exports.run = async (client, message, args) => {
+	if(!message.member.hasPermission('MANAGE_GUILD')) return message.reply('You do not have permissions to use this command!', { allowedMentions: { repliedUser: false } });
 	if (args[0] !== 'force') {
 		const registerData = client.slashcommands.map((cmd) => cmd.config.registerData);
 		const guildCmds = (await client.api.applications(client.user.id).guilds(message.guild.id).commands.get()).map(x => x.name);

@@ -17,7 +17,7 @@ module.exports = async (client, message) => {
 		.setThumbnail(client.user.displayAvatarURL())
 		.setFooter(client.user.tag, client.user.displayAvatarURL())
 		.setAuthor(message.author.tag, message.author.displayAvatarURL());
-	if (message.content === `<@!${client.user.id}>`) message.reply({ embed: mentionembed, allowedMentions: { repliedUser: false } });
+	if (message.content === `<@!${client.user.id}>`) return message.reply({ embed: mentionembed, allowedMentions: { repliedUser: false } });
 
 	const messageArray = message.content.split(' ');
 	let cmd = messageArray[0];

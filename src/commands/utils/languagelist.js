@@ -1,10 +1,11 @@
-const recon = require("reconlx");
+/* eslint-disable no-unused-vars */
+const recon = require('reconlx');
 const Discord = require('discord.js');
 // Destructure the package
-const ReactionPages = recon.ReactionPages
+const ReactionPages = recon.ReactionPages;
 module.exports.run = async (client, message, args) => {
-const embed1 = new Discord.MessageEmbed()
-    .setDescription(`af : Afrikaans,\n
+	const embed1 = new Discord.MessageEmbed()
+		.setDescription(`af : Afrikaans,\n
     sq: Albanian,\n
     am: Amharic, \n
     ar: Arabic, \n
@@ -37,9 +38,9 @@ const embed1 = new Discord.MessageEmbed()
     de: German,\n
     el: Greek \n
     gu: Gujarati`)
-    .setColor("RANDOM")
-    const embed2 = new Discord.MessageEmbed()
-    .setDescription(`ht: Haitian Creole,
+		.setColor('RANDOM');
+	const embed2 = new Discord.MessageEmbed()
+		.setDescription(`ht: Haitian Creole,
     ha: Hausa,\n
     haw: Hawaiian,\n
     he: Hebrew,\n
@@ -112,19 +113,19 @@ const embed1 = new Discord.MessageEmbed()
     yo: Yoruba,\n
     zu: Zulu\n
 };`)
-.setColor("RANDOM")
-    const pages = [embed1, embed2];
-// Change pages when sending numbers.
-const textPageChange = true;
-// Create an emojilist, first emoji being page back and second emoji being page front. Defaults are set to  [⏪, ⏩].
-const emojis = ["⏪", "⏩"];
-// Define a time in ms, defaults are set to 60000ms which is 60 seconds. Time on how long you want the embed to be interactable
-const time = 30000;
-// Call the ReactionPages method, use the <message> parameter to initialize it.
-ReactionPages(message, pages, textPageChange, emojis, time);
-} 
+		.setColor('RANDOM');
+	const pages = [embed1, embed2];
+	// Change pages when sending numbers.
+	const textPageChange = true;
+	// Create an emojilist, first emoji being page back and second emoji being page front. Defaults are set to  [⏪, ⏩].
+	const emojis = ['⏪', '⏩'];
+	// Define a time in ms, defaults are set to 60000ms which is 60 seconds. Time on how long you want the embed to be interactable
+	const time = 30000;
+	// Call the ReactionPages method, use the <message> parameter to initialize it.
+	ReactionPages(message, pages, textPageChange, emojis, time);
+};
 module.exports.config = {
 	name: 'lang_list',
 	aliases: [],
 	description: 'This is the language list for translate command',
-}; 
+};

@@ -2,13 +2,13 @@
 const fs = require('fs');
 
 function loadCommands(client) {
-	fs.readdir('commands/', (err, cmdfolders) => {
+	fs.readdir('src/commands/', (err, cmdfolders) => {
 
 		if (err) console.log(err);
 
 		if(!cmdfolders[0]) return console.log('Client couldn\'t find any commands in the commands folder!');
 		cmdfolders.forEach((cmdfolder) => {
-			fs.readdir(`commands/${cmdfolder}`, (err, cmds) => {
+			fs.readdir(`src/commands/${cmdfolder}`, (err, cmds) => {
 				if (!cmds) return console.error(`Client couldn't find any commands in the ${cmdfolder} folder!`);
 				cmds = cmds.filter(z => z.split('.')[1] === 'js');
 				cmds.forEach((cmd) => {

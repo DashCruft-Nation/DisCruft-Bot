@@ -2,7 +2,7 @@
 const schema = require('../../database/models/Guilds');
 const Discord = require('discord.js');
 const Canvas = require('canvas');
-Canvas.registerFont('./Debrosee-ALPnL.ttf', { family: 'deb' });
+Canvas.registerFont('./src/Debrosee-ALPnL.ttf', { family: 'deb' });
 
 /**
  * @param {Discord.Client} client

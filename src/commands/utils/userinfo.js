@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 const moment = require('moment');
-const momentDur = require('moment-duration-format');
 const { Client, Message, MessageEmbed } = require('discord.js');
 const config = require('../../config.json');
 const momentDurationFormatSetup = require('moment-duration-format');

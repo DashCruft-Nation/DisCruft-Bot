@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 module.exports = async (client) => {
-	fs.readdir('./slashcommands', (err, files) => {
+	fs.readdir('./src/slashcommands', (err, files) => {
 		if(err) throw err;
 
 		files.forEach((file) => {
