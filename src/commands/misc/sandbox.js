@@ -7,7 +7,7 @@ const Discord = require('discord.js');
  * @param {String[]} args
  */
 module.exports.run = async (bot, message, args) => {
-	if (!message.member.roles.cache.has('804584870402850828')) return message.reply('This command is only allowed to `Contributors` for now, it may soon be available to everyone after being tested', { allowedMentions: { repliedUser: false } });
+	if (!message.member.roles.cache.has('652615952709451825')) return message.reply('This command is only allowed to `Contributors` for now, it may soon be available to everyone after being tested', { allowedMentions: { repliedUser: false } });
 	if (!args[0]) return message.reply('Please provide something to evaluate!', { allowedMentions: { repliedUser: false } });
 	const evaled = await evaluate(args.join(' ')) || 'No response!';
 	message.channel.send(evaled);
