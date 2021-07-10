@@ -2,7 +2,7 @@
   "name": "discruft-bot",
   "version": "1.0.0",
   "description": "The DashCruft Nation community Discord bot!",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,7 +21,7 @@
     "canvacord": "^5.2.1",
     "canvas": "^2.7.0",
     "discord.js": "^12.5.3",
-    "dotenv": "^8.2.0",
+    "dotenv": "^8.6.0",
     "eslint": "^7.24.0",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
@@ -31,6 +31,6 @@
     "pretty-ms": "^7.0.1",
     "reconlx": "^1.2.41",
     "yt-search": "^2.8.0",
-    "ytdl-core": "^4.5.0"
+    "ytdl-core": "^4.7.0"
   }
 }
