@@ -11,10 +11,8 @@ module.exports.run = async (client, message, args) => {
 	try {
 		const embed1 = new MessageEmbed()
 			.setColor('RANDOM')
-		// eslint-disable-next-line quotes
-			.addField('Question', args.join(" "))
-		// eslint-disable-next-line quotes
-			.addField('Value', math.evaluate(args.join(" ")))
+			.addField('Question', args.join(' '))
+			.addField('Value', math.evaluate(args.join(' ')))
 			.setTimestamp();
 		return message.channel.send({ embed: embed1 });
 	}
