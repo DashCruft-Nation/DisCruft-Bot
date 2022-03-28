@@ -27,6 +27,6 @@ MongoDB=CONNECTION-STRING-HERE
 - The code must be clean and readable (IT MUST ALSO BE `FULLY TESTED` AS WELL!)
 - Make a pull request with your code once you have finished
 - You may also make an issue if something concerns you
-- Talk with `DashCruft`, `Swaggger`, or any other member of the org for any questions you may have in our [Discord Server](https://dashcruft.com/discord)
+- Talk with `DashCruft` or any other member of the org for any questions you may have in our [Discord Server](https://dashcruft.com/discord)
 
 😳 So, let's make the first DashCruft-Nation project a success!
