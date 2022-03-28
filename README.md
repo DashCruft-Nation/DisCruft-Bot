@@ -1,8 +1,5 @@
 # DisCruft-Bot
 
-> **READ [THIS ANNOUNCEMENT](https://discord.com/channels/644764850706448384/660623947620155423/823783669575581697) <br />
-> If you have access, please do not merge PRs without the permission!**
-
 _The official community bot for the DashCruft Nation._
 
 ## Requirements & Information
